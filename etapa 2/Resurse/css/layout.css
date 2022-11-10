@@ -112,6 +112,19 @@ footer{
 #orar table tbody:hover tr td[rowspan]:hover, #orar table tr>td:hover{
     background-color:var(--culare-celula-selectata);
 }
+#orar table tfoot tr{
+    background-color: var(--culoare-tabel-odd);
+    text-align: center;
+}
+#orar table caption{
+    caption-side: bottom;
+    background-color: var(--culoare-tabel-even);
+    color: var(--culoare-text);
+    padding: 5px;
+}
+#orar table caption a{
+    color: var(--culoare-text)
+}
 
 
 #link-top{
