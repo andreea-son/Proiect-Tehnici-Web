@@ -1,0 +1,195 @@
+body{
+    --culoare-text: #332422;
+    --culoare-tabel-even:#E9B0A9;
+    --culoare-tabel-odd:#FAAFA5;
+    --culare-celula-selectata:#F76855;
+    --culare-rand-selectat:#F08F82;
+    --culoare-link: #F08F82;
+    --culoare-background-link: #EFE7E6;
+    --margin-main: 7%;
+    --padding-main: 10px;
+    --padding-tabel: 10px;
+    --inaltime-meniu: 40px;
+    --latime-buton: 175px;
+    --culoare-meniu:#FAAFA5;
+    --culoare-text-meniu:#EFE7E6;
+    --culoare-text-meniu-selectat:#75332A;
+    --culoare-shadow-link: #E9B0A9;
+    --culoare-sageata-link: #F76855;
+    --culoare-tooltip: #F76855;
+    --font-family: 'Red Hat Display';
+    --font-family-heading: 'Playfair Display';
+    
+    font-family: var(--font-family), serif;
+    color: var(--culoare-text);
+    font-size: 16px;
+    
+    margin-left: 0;
+    margin-right: 0;
+}
+main{
+    margin-left:var(--margin-main);
+    margin-right:var(--margin-main);
+}
+footer{
+    margin-left: var(--margin-main);
+}
+
+
+#grid-pagina{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:"z-despre z-despre z-despre z-despre"
+                        "z-despre z-despre z-despre z-despre"
+                        "z-calendar z-orar z-orar z-anunturi"
+                        "z-zona z-zona z-zona z-zona"
+                        "z-zona z-zona z-zona z-zona"
+                        "z-site-server z-site-server z-lista z-util-stat"
+}
+#grid-pagina > *{
+    margin: 0;
+    padding: var(--padding-main);
+}
+#despre{
+    grid-area:z-despre;
+}
+#calendar{
+    grid-area:z-calendar;
+}
+#orar{
+    grid-area:z-orar;
+}
+#anunturi{
+    grid-area:z-anunturi;
+}
+#lista-utilizatori{
+    grid-area:z-lista;
+}
+#utilizator-statistici{
+    grid-area:z-util-stat;
+}
+#site-server{
+    grid-area:z-site-server;
+}
+#zona{
+    grid-area:z-zona;
+}
+#ul-contact {
+    list-style-type: none;
+}
+
+
+#orar table{
+    border-radius: 15px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+#orar table th{
+    font-family: var(--font-family-heading), serif;
+}
+#orar table, #orar th, #orar td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+#orar th, #orar td{
+    padding: var(--padding-tabel);
+}
+#orar table caption{
+    caption-side: bottom;
+    font-family: var(--font-family-heading), serif;
+}
+#orar table th:nth-child(even), #orar table td:nth-child(even){
+    background-color: var(--culoare-tabel-even);
+}
+#orar table th:nth-child(odd), #orar table td:nth-child(odd){
+    background-color: var(--culoare-tabel-odd);
+}
+#orar table tr:hover>td, #orar table tbody:hover td[rowspan]
+{
+    background-color: var(--culare-rand-selectat);
+}
+#orar table tbody:hover tr td[rowspan]:hover, #orar table tr>td:hover{
+    background-color:var(--culare-celula-selectata);
+}
+
+
+#link-top{
+    position:fixed;
+    opacity:0.5;
+    bottom:0.3em;
+    left:0.3em;
+    width:3rem;
+    height:3rem;
+    line-height:3rem;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 0 10px 5px var(--culoare-shadow-link) inset;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: var(--culoare-background-link);
+    transition: opacity 0.5s linear, box-shadow 0.5s linear;
+}
+#sageata{
+    transition: transform 0.5s linear;
+    color: var(--culoare-sageata-link);
+    scale: 2.2;
+}
+#link-top:hover{
+    opacity:1;
+}
+#link-top:hover #sageata{
+    transform: scale(1.5);
+}
+#link-top:hover .tooltip{
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip {
+    visibility: hidden;
+    background-color: var(--culoare-tooltip);
+    padding: 2px;
+    z-index: 1;
+    bottom: 100%;
+    left: 120%;
+    color: white;
+    text-align: center;
+    position: relative;
+    opacity: 0.5;
+    transition: opacity 0.5s linear;
+}
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent  var(--culoare-tooltip) transparent transparent;
+}
+
+
+#stilizare-ifr{
+    display: flex;
+}
+#stilizare-link-ifr a{
+    display: block;
+    border: 1px solid black;
+}
+
+
+.stilizare-link a{
+    color: var(--culoare-text);
+}
+.heading{
+    font-family: var(--font-family-heading), serif;
+}
+.image{
+    background-image: url(../Imagini/buticul_cu_flori_1700px.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 405px;
+    background-size: cover;
+}
