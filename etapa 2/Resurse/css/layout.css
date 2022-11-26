@@ -2,8 +2,8 @@ body{
     --culoare-text: #332422;
     --culoare-tabel-even:#E9B0A9;
     --culoare-tabel-odd:#FAAFA5;
-    --culare-celula-selectata:#F76855;
-    --culare-rand-selectat:#F08F82;
+    --culoare-celula-selectata:#F76855;
+    --culoare-rand-selectat:#F08F82;
     --culoare-link: #F08F82;
     --culoare-background-link: #EFE7E6;
     --margin-main: 7%;
@@ -14,9 +14,16 @@ body{
     --culoare-meniu:#FAAFA5;
     --culoare-text-meniu:#EFE7E6;
     --culoare-text-meniu-selectat:#75332A;
-    --culoare-shadow-link: #E9B0A9;
-    --culoare-sageata-link: #F76855;
-    --culoare-tooltip: #F76855;
+    --culoare-shadow-link: #FAAFA5;
+    --culoare-sageata-link: #F08F82;
+    --culoare-tooltip: #F08F82;
+    --culoare-tab-iframe: #ffebe8;
+    --culoare-tab-iframe-selectat:#fffbfb;
+    --culoare-border-iframe: #FAAFA5;
+    --culoare-text-iframe: #FAAFA5;
+    --culoare-background-footer: #FAAFA5;
+    --culoare-heading: #332422;
+    --culoare-icon-heading: #FAAFA5;
     --font-family: 'Red Hat Display';
     --font-family-heading: 'Playfair Display';
     
@@ -32,7 +39,13 @@ main{
     margin-right:var(--margin-main);
 }
 footer{
+    background-color: var(--culoare-background-footer);
+    color: white;
+}
+#copil-footer{
     margin-left: var(--margin-main);
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 
@@ -79,6 +92,9 @@ footer{
 }
 
 
+#orar h1{
+    text-align: center;
+}
 #orar table{
     border-radius: 15px;
     overflow: hidden;
@@ -105,12 +121,15 @@ footer{
 #orar table th:nth-child(odd), #orar table td:nth-child(odd){
     background-color: var(--culoare-tabel-odd);
 }
-#orar table tr:hover>td, #orar table tbody:hover td[rowspan]
-{
-    background-color: var(--culare-rand-selectat);
+#orar table tr>td{
+    transition: background-color 1.2s linear;
 }
-#orar table tbody:hover tr td[rowspan]:hover, #orar table tr>td:hover{
-    background-color:var(--culare-celula-selectata);
+#orar table tr:hover>td
+{
+    background-color: var(--culoare-rand-selectat);
+}
+#orar table tr>td:hover{
+    background-color:var(--culoare-celula-selectata);
 }
 #orar table tfoot tr{
     background-color: var(--culoare-tabel-odd);
@@ -134,7 +153,7 @@ footer{
     left:0.3em;
     width:3rem;
     height:3rem;
-    line-height:3rem;
+    line-height:3.5rem;
     text-align: center;
     text-decoration: none;
     box-shadow: 0 0 10px 5px var(--culoare-shadow-link) inset;
@@ -152,7 +171,7 @@ footer{
     opacity:1;
 }
 #link-top:hover #sageata{
-    transform: scale(1.5);
+    transform: scale(1.3);
 }
 #link-top:hover .tooltip{
     visibility: visible;
@@ -162,33 +181,71 @@ footer{
     visibility: hidden;
     background-color: var(--culoare-tooltip);
     padding: 2px;
-    z-index: 1;
-    bottom: 100%;
-    left: 120%;
+    z-index: 5;
+    bottom: 120%;
+    left: 90%;
     color: white;
     text-align: center;
     position: relative;
     opacity: 0.5;
+    border-radius: 5px;
     transition: opacity 0.5s linear;
-}
-.tooltip::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent  var(--culoare-tooltip) transparent transparent;
 }
 
 
 #stilizare-ifr{
     display: flex;
 }
+#stilizare-ifr iframe{
+    border: 4px solid var(--culoare-border-iframe);
+    display: block;
+    z-index: 2;
+}
 #stilizare-link-ifr a{
     display: block;
-    border: 1px solid black;
+    border: 1px solid var(--culoare-border-iframe);
+    border-left: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--culoare-tab-iframe);
+    text-decoration: none;
+    color: var(--culoare-text-iframe);
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
+    left: -30px;
+}
+#stilizare-link-ifr a:hover, #stilizare-link-ifr div:hover a{
+    transform: translateX(30px);
+}
+#stilizare-link-ifr div:hover, #stilizare-link-ifr a:hover, #stilizare-link-ifr div:hover a{
+    background-color: var(--culoare-tab-iframe-selectat);
+}
+#stilizare-link-ifr a div{
+    margin: 2px;
+    margin-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border: 1px solid var(--culoare-border-iframe);
+    border-left: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--culoare-tab-iframe);
+    padding-left: 40px;
+}
+#stilizare-link-ifr a div, #stilizare-link-ifr a{
+    transition: background-color 1s linear, transform 1s linear;
+}
+
+
+.stilizare-link-footer a{
+    color: white;
+    text-decoration: none;
+}
+.heading-footer{
+    color: white;
+    font-family: var(--font-family-heading), serif;
 }
 
 
@@ -197,6 +254,10 @@ footer{
 }
 .heading{
     font-family: var(--font-family-heading), serif;
+    color: var(--culoare-heading);
+}
+.heading i{
+    color: var(--culoare-icon-heading);
 }
 .image{
     background-image: url(../Imagini/buticul_cu_flori_1700px.png);
