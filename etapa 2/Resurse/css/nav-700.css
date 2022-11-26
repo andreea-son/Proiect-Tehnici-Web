@@ -42,7 +42,7 @@ nav>ul.meniu{
     
     mask-size: 100% 200%;
     -webkit-mask-size: 100% 200%;
-    
+
     animation-name: animatie-gradient;
     -webkit-animation-name: animatie-gradient;
 
@@ -55,6 +55,7 @@ nav>ul.meniu{
     animation-duration: 3s;
     -webkit-animation-duration: 3s;
 }
+
 @keyframes animatie-gradient {
     0% {
         -webkit-mask-position: 0 100%;
@@ -65,4 +66,3 @@ nav>ul.meniu{
         mask-position: 0 0;
     }
 }
-
