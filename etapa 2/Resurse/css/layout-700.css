@@ -22,3 +22,11 @@ th, td {
     width: 350px;
     height: 196px;
 }
+#link-top{
+    width:2rem;
+    height:2rem;
+    line-height:2.25rem;
+}
+.tooltip {
+    display: none;
+}
