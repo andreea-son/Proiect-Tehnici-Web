@@ -37,11 +37,11 @@ ul.meniu ul {
 nav>ul.meniu{
     background-color: var(--culoare-meniu);
     
-    mask-image: linear-gradient(black 50%, transparent);
-    -webkit-mask-image: linear-gradient(black 50%, transparent);
+    mask-image: linear-gradient(black 70%, transparent);
+    -webkit-mask-image: linear-gradient(black 70%, transparent);
     
-    mask-size: 100% 200%;
-    -webkit-mask-size: 100% 200%;
+    mask-size: 100% 325%;
+    -webkit-mask-size: 100% 325%;
 
     animation-name: animatie-gradient;
     -webkit-animation-name: animatie-gradient;
@@ -52,8 +52,11 @@ nav>ul.meniu{
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
 
-    animation-duration: 3s;
-    -webkit-animation-duration: 3s;
+    animation-duration: 5s;
+    -webkit-animation-duration: 5s;
+
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
 }
 
 @keyframes animatie-gradient {
@@ -61,8 +64,14 @@ nav>ul.meniu{
         -webkit-mask-position: 0 100%;
         mask-position: 0 100%;
     }
+    50% {
+        -webkit-mask-position: 0 50%;
+        mask-position: 0 50%;
+    }
     100% {
         -webkit-mask-position: 0 0;
         mask-position: 0 0;
+        mask-image: none;
+        -webkit-mask-image: none;
     }
 }
