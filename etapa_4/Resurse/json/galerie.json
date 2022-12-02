@@ -1,0 +1,65 @@
+{
+	"cale_galerie":"/Resurse/Imagini/galerie",
+	"imagini": [
+		{
+			"fisier":"romantic.png",
+			"descriere":"Decor floral pastelat",
+			"timp":"00:10-22:10"
+		},
+		{
+			"fisier":"natura.png",
+			"descriere":"Aranjamente florale discrete",
+			"timp":"01:10-23:10"
+		},
+		{
+			"fisier":"clasic.png",
+			"descriere":"Aranjament floral minimal",
+			"timp":"02:10-00:10"
+		},
+		{
+			"fisier":"excentric.png",
+			"descriere":"Flori cu aspect exotic",
+			"timp":"03:10-01:10"
+		},
+		{
+			"fisier":"rustic_1.png",
+			"descriere":"Plante agatatoare, ghirlande",
+			"timp":"04:10-02:10"
+		},
+		{
+			"fisier":"vintage_1.png",
+			"descriere":"Decoratiuni florale rafinate",
+			"timp":"05:10-03:10"
+		},
+		{
+			"fisier":"rustic_2.png",
+			"descriere":"Flori de vara",
+			"timp":"06:10-04:10"
+		},
+		{
+			"fisier":"glamoros.png",
+			"descriere":"Aranjamente florale voluminoase",
+			"timp":"07:10-05:10"
+		},
+		{
+			"fisier":"modern.png",
+			"descriere":"Flori delicate",
+			"timp":"08:10-06:10"
+		},
+		{
+			"fisier":"visator_3.png",
+			"descriere":"Flori de primavara",
+			"timp":"09:10-07:10"
+		},
+		{
+			"fisier":"vintage_2.png",
+			"descriere":"Decor floral in tonuri calde",
+			"timp":"10:10-08:10"
+		},
+		{
+			"fisier":"nunta_toamna.png",
+			"descriere":"Flori de toamna",
+			"timp":"11:10-09:10"
+		}
+	]
+}
