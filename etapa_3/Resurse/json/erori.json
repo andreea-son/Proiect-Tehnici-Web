@@ -1,0 +1,24 @@
+{
+    "cale_baza": "/Resurse/Imagini/erori",
+    "eroare_default":{
+        "titlu":"Eroare",
+        "text": "A survenit o eroare.",
+        "imagine":"lacat.png"
+    },
+    "info_erori": [
+        {
+            "identificator":404,
+            "status":true,
+            "titlu":"Eroare 404",
+            "text": "Pagina cautata nu a fost gasita.",
+            "imagine":"lupa.png"
+        },
+        {
+            "identificator":403,
+            "status":true,
+            "titlu":"Eroare 403",
+            "text": "Nu aveti permisiunea sa accesati aceasta pagina.",
+            "imagine":"lacat.png"
+        }
+    ]
+}
