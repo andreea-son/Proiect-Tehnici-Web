@@ -84,7 +84,6 @@ Am folosit o schema monocromatica, folosind tool-ul https://color.adobe.com/crea
   * nuanta-roz-highlight:#F08F82
   * nuanta-roz-pal-inchis: #FFEBE8
   * nuanta-roz-pal-deschis: #FFFBFB
-  * culoare-background-link: #EFE7E6
   * culoare-principala:#FAAFA5
   * culoare-secundara:#F76855
   
