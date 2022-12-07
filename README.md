@@ -74,7 +74,7 @@ Etapa 2:
 
 * Schema cromatica a site-ului:
 
-Am folosit o schema monocromatica, folosind tool-ul https://color.adobe.com/create/color-wheel unde am inlocuit si/sau modificat unele culori pentru a se adapta stilului site-ului si am derivat alte culori (in principal nuantele) din culorile alese initial. 
+Am folosit o schema monocromatica, utilizand tool-ul https://color.adobe.com/create/color-wheel unde am inlocuit si/sau modificat unele culori pentru a se adapta stilului site-ului si am derivat alte culori (in principal nuantele) din culorile alese initial. 
 * Culori:
   	* culoare-text-negru: #332422
   	* culoare-text-alb:#EFE7E6
