@@ -79,11 +79,10 @@ Am folosit o schema monocromatica, folosind tool-ul https://color.adobe.com/crea
   * culoare-text-negru: #332422
   * culoare-text-alb:#EFE7E6
   * culoare-text-maro:#75332A
-  * nuanta-roz-deschis:#E9B0A9
-  * nuanta-roz-inchis:#FAAFA5
+  * nuanta-roz:#E9B0A9
   * nuanta-roz-highlight:#F08F82
-  * nuanta-roz-pal-inchis: #FFEBE8
-  * nuanta-roz-pal-deschis: #FFFBFB
+  * nuanta-roz-pal-inchis:#FFEBE8
+  * nuanta-roz-pal-deschis:#FFFBFB
   * culoare-principala:#FAAFA5
   * culoare-secundara:#F76855
   
