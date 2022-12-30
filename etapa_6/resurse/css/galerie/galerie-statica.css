@@ -1,0 +1,99 @@
+#grid-galerie {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    counter-reset: nrimag 0;
+    margin-left: 3%;
+}
+#grid-galerie figure{
+    margin-top: 25%;
+    margin-right: 25%;
+}
+#grid-galerie figure:nth-child(1){
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 2;
+}
+#grid-galerie figure:nth-child(2){
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 2;
+    grid-column-end: 3;
+}
+#grid-galerie figure:nth-child(3){
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-row-end: 2;
+    grid-column-end: 4;
+}
+#grid-galerie figure:nth-child(4){
+    grid-row-start: 1;
+    grid-column-start: 4;
+    grid-row-end: 2;
+    grid-column-end: 5;
+}
+#grid-galerie figure:nth-child(5){
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 3;
+    grid-column-end: 2;
+}
+#grid-galerie figure:nth-child(6){
+    grid-row-start: 2;
+    grid-column-start: 4;
+    grid-row-end: 3;
+    grid-column-end: 5;
+}
+#grid-galerie figure:nth-child(7){
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-row-end: 4;
+    grid-column-end: 2;
+}
+#grid-galerie figure:nth-child(8){
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-row-end: 4;
+    grid-column-end: 3;
+}
+#grid-galerie figure:nth-child(9){
+    grid-row-start: 3;
+    grid-column-start: 3;
+    grid-row-end: 4;
+    grid-column-end: 4;
+}
+#grid-galerie figure:nth-child(10){
+    grid-row-start: 3;
+    grid-column-start: 4;
+    grid-row-end: 4;
+    grid-column-end: 5;
+}
+#grid-galerie figure:hover img{
+    transform: scale(1.3);
+    transform-origin: 50% 100%;
+}
+#grid-galerie figure:hover figcaption{
+    background-color: var(--culoare-fundal);
+    border-color: var(--culoare-principala);
+    color: var(--culoare-principala);
+}
+#grid-galerie figcaption{
+    counter-increment: nrimag 1;
+    border: 4px double;
+    border-color: var(--culoare-secundara);
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 10%;
+    width: calc(100% - 6px);
+    background-color: var(--nuanta-roz-pal-inchis);
+    color: var(--culoare-secundara);
+    transition: color 1250ms linear, background-color 1250ms linear, border-color 1250ms linear;
+}
+#grid-galerie img{
+    width: 100%;
+    transition: all 1250ms linear;
+}
+#grid-galerie figcaption::before{
+    content: counter(nrimag, lower-alpha);
+    font-weight: bold;
+}

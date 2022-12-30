@@ -1,0 +1,17 @@
+#print-banner{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 25vw;
+    height: 5vw;
+    font-size: 0.75vw;
+    line-height: 5vw;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 6px;
+    border: 5px double;
+    border-color: var(--culoare-principala);
+    color: var(--culoare-text-negru);
+    background-color: var(--culoare-text-alb);
+}

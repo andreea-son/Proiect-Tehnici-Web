@@ -1,0 +1,78 @@
+{
+	"cale_galerie":"/resurse/imagini/galerie",
+	"imagini": [
+		{
+			"fisier":"romantic.png",
+			"titlu": "Decor floral pastelat",
+			"descriere":" → Decor floral pastelat",
+			"timp":"00:10-22:10"
+		},
+		{
+			"fisier":"natura.png",
+			"titlu": "Aranjamente florale discrete",
+			"descriere":" → Aranjamente florale discrete",
+			"timp":"01:10-23:10"
+		},
+		{
+			"fisier":"clasic.png",
+			"titlu": "Aranjamente florale discrete",
+			"descriere":" → Aranjament floral minimal",
+			"timp":"02:10-00:10"
+		},
+		{
+			"fisier":"excentric.png",
+			"titlu": "Flori cu aspect exotic",
+			"descriere":" → Flori cu aspect exotic",
+			"timp":"03:10-01:10"
+		},
+		{
+			"fisier":"rustic_1.png",
+			"titlu": "Plante agatatoare, ghirlande",
+			"descriere":" → Plante agatatoare, ghirlande",
+			"timp":"04:10-02:10"
+		},
+		{
+			"fisier":"vintage_1.png",
+			"titlu": "Decoratiuni florale rafinate",
+			"descriere":" → Decoratiuni florale rafinate",
+			"timp":"05:10-03:10"
+		},
+		{
+			"fisier":"rustic_2.png",
+			"titlu": "Flori de vara",
+			"descriere":" → Flori de vara",
+			"timp":"06:10-04:10"
+		},
+		{
+			"fisier":"glamoros.png",
+			"titlu": "Aranjamente florale voluminoase",
+			"descriere":" → Aranjamente florale voluminoase",
+			"timp":"07:10-05:10"
+		},
+		{
+			"fisier":"credit.png",
+			"titlu": "Flori multicolore",
+			"descriere":" → Flori multicolore",
+			"autor": "Autor: José León pe Unsplash",
+			"timp":"08:10-06:10"
+		},
+		{
+			"fisier":"visator_3.png",
+			"titlu": "Flori de primavara",
+			"descriere":" → Flori de primavara",
+			"timp":"09:10-07:10"
+		},
+		{
+			"fisier":"vintage_2.png",
+			"titlu": "Decor floral in tonuri calde",
+			"descriere":" → Decor floral in tonuri calde",
+			"timp":"10:10-08:10"
+		},
+		{
+			"fisier":"nunta_toamna.png",
+			"titlu": "Flori de toamna",
+			"descriere":" → Flori de toamna",
+			"timp":"11:10-09:10"
+		}
+	]
+}
