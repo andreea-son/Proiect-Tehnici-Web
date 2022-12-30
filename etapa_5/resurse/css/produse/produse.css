@@ -1,0 +1,213 @@
+.grid-produse{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.grid-produse .produs{
+    border-radius: 6px;
+    border: 5px double;
+    border-color: var(--culoare-principala);
+    background-color: var(--culoare-text-alb);
+    overflow: hidden;
+    color: var(--culoare-text-negru);
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+.grid-produse .produs h2{
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.grid-produse .produs h2 a{
+    color: var(--culoare-text-negru);
+    text-decoration: none;
+}
+.grid-produse .produs h2 a:hover{
+    color: var(--culoare-secundara);
+}
+.grid-produse .produs figure{
+    float: right;
+}
+.grid-produse .produs figure img{
+    border-radius: 6px;
+    border: 5px double;
+    border-color: var(--culoare-principala);
+}
+.grid-produse .produs .info-prod{
+    list-style-type: none;
+}
+.grid-produse .produs .info-prod li{
+    font-weight:bold;
+}
+.grid-produse .produs p.categorie{
+    text-align:left;
+    font-weight:bold;
+}
+.grid-produse .produs p.descriere{
+    text-align:left;
+    font-weight:bold;
+}
+.grid-produse .produs p.detalii{
+    text-align:left;
+    font-weight:bold;
+}
+.grid-produse .produs p.cos{
+    text-align:left;
+    font-weight:bold;
+    display: inline;
+}
+.select-cos{
+    display: none;
+    vertical-align: middle;
+}
+.fa-cart-shopping{
+    color: var(--culoare-principala);
+}
+.select-cos:checked~.fa-cart-shopping{
+    color: var(--culoare-secundara);
+}
+#ul-radio{
+    list-style: none;
+}
+input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    border: 2px solid var(--culoare-fundal);
+    outline: 1px solid #ddd;
+    background-color: var(--culoare-fundal);
+    border-radius: 50%;
+    margin-right: 0.1rem;
+}
+
+input[type="radio"]:hover{
+    background-color: #ddd;
+    border-color: #ddd;
+}
+input[type="radio"]:checked, input[type="radio"]:checked:hover{
+    background-color: var(--culoare-principala);
+    border-color: var(--culoare-fundal);
+}
+input[type="text"]{
+    border-radius: 6px;
+    border: 2px solid #ddd;
+}
+
+input[type='range'] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--culoare-principala);
+    border-radius: 10px;
+    width: 150px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    border-radius: 10px;
+    background: var(--culoare-secundara);
+}
+
+input[type=range]::-moz-range-thumb{
+    width: 10px;
+    appearance: none;
+    height: 10px;
+    border-radius: 10px;
+    background: var(--culoare-secundara);
+} 
+
+input[type=range]::-ms-thumb{
+    width: 10px;
+    appearance: none;
+    height: 10px;
+    border-radius: 10px;
+    background: var(--culoare-secundara);
+}
+
+#ul-checkbox{
+    list-style: none;
+}
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    margin-right: 0.1rem;
+    margin-bottom: -0.1rem;
+    border: 1px solid #ddd;
+    background-color: var(--culoare-fundal);
+    border-radius: 10%;
+}
+input[type="checkbox"]:hover{
+    background-color: #ddd;
+}
+input[type="checkbox"]:checked {
+    background-color: var(--culoare-principala);
+    border: 2px solid var(--culoare-fundal);
+    outline: 1px solid #ddd;
+}
+option:checked{
+    background-color: var(--culoare-principala);
+}
+option:hover{
+    background-color: var(--culoare-principala);
+}
+#sel-pret{
+    vertical-align: top;
+    border: 1px solid #ddd;
+    border-radius: 10%;
+    margin-bottom: 5px;
+    background-color: var(--culoare-fundal);
+}
+#inp-livrare{
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    background-color: var(--culoare-fundal);
+}
+#sel-flori{
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    margin-bottom: 5px;
+    background-color: var(--culoare-fundal);
+}
+#txt-descriere{
+    vertical-align: top;
+    margin-bottom: 5px;
+    background-color: var(--culoare-fundal);
+    border-radius: 6px;
+    border: 2px solid #ddd;
+}
+#butoane-filtre button{
+    margin-right: 1%;
+    margin-top: 1%;
+    background-color: var(--culoare-principala) !important;
+    color: var(--culoare-fundal) !important;
+}
+#div-culoare, #div-ocazie{
+    display: inline-block;
+    vertical-align: top;
+}
+#div-nume label, #div-fire label, #div-pret label, #div-flori label, #div-livrare label, #div-descriere label{
+    display: block;
+}
+#div-nume, #div-fire, #div-pret, #div-flori, #div-livrare, #div-descriere{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1rem;
+}
+#p-suma{
+    display: inline;
+}
+#fara-produse{
+    display: none;
+}
+#inp-nume{
+    background-color: var(--culoare-fundal);
+}

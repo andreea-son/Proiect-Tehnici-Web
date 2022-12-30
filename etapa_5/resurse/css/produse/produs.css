@@ -1,0 +1,33 @@
+h2{
+    padding:0.4rem;
+}
+#art-produs{
+    border-radius: 6px;
+    border: 5px double;
+    border-color: var(--culoare-principala);
+    background-color: var(--culoare-text-alb);
+    overflow: hidden;
+    color: var(--culoare-text-negru);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 20px;
+    width: 50%;
+}
+#art-produs p{
+    font-weight:bold;
+}
+.imag-produs{
+    float: right;
+}
+.imag-produs img{
+    width: 75%;
+    height: auto;
+    border-radius: 6px;
+    border: 5px double;
+    border-color: var(--culoare-principala);
+}
+@media screen and (max-width: 700px){
+    #art-produs{
+        width:95%;
+    }
+}
