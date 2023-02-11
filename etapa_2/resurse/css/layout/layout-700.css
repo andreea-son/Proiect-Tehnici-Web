@@ -1,0 +1,32 @@
+#grid-pagina {
+    display: block;
+}
+body {
+    font-size: var(--font-size-700);
+}
+.image {
+    background-image: url(../../imagini/background/buticul_cu_flori_700px.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 405px;
+    background-size: cover;
+}
+#orar {
+    overflow-x: scroll;
+}
+th, td { 
+    min-width: 50px; 
+}
+#recomandari iframe {
+    width: 350px;
+    height: 196px;
+}
+#link-top{
+    width:2rem;
+    height:2rem;
+    line-height:2.25rem;
+}
+.tooltip {
+    display: none;
+}

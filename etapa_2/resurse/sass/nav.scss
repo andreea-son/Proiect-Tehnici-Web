@@ -1,0 +1,126 @@
+header{
+    position: relative;
+    z-index: 99;
+}
+ul.meniu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+@mixin mixin1{
+    height: var(--inaltime-meniu);
+    width: var(--latime-buton);
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    line-height: var(--inaltime-meniu);
+}
+@mixin mixin2{
+    color: var(--culoare-text-maro);
+}
+@mixin mixin3{
+    color: var(--culoare-text-alb);
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--culoare-principala);
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+@mixin mixin4{
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+ul.meniu{
+    >li{
+        @include mixin1;
+        &:hover ul {
+            animation-name: animatie_submeniu;
+            animation-duration: 500ms;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            transform-origin: 50% 0;
+            display: block;
+        }
+    }
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        z-index: 5;
+        position: relative;
+        display: none;
+        >li {
+            @include mixin1;
+        }
+    }
+    li:hover{
+        overflow: visible;
+    }
+    li{
+        a:hover{
+            @include mixin2;
+        }
+        div:hover{
+            @include mixin2;
+        }
+        a{
+            display: block;
+            height: 100%;
+        }
+    }
+    a{
+        @include mixin3;
+    }
+    div{
+        @include mixin3;
+    }
+}
+.copil-li-acasa{
+    display: inline-block;
+}
+#li-acasa {
+    div:nth-child(2){
+        color: var(--culoare-principala);
+    }
+    &:hover div{
+        color: var(--culoare-text-maro);
+        &:hover{
+            @include mixin4;
+        }
+        &:hover~div{
+            @include mixin4;
+        }
+    }
+}
+@keyframes animatie_submeniu {
+    0%{
+        transform: scale(0, 0);
+    }
+    50%{
+        transform: scale(0.5, 0.5);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+nav {
+    height: var(--inaltime-meniu);
+    top: 0;
+    margin-left: calc(50vw - 350px);
+}
+#hamburger, #ch-menu {
+    display: none;
+}
+#bara-meniu {
+    background-color: var(--culoare-principala);
+    height: var(--inaltime-meniu);
+    width: 100vw;
+    top: 0;
+    position: fixed;
+}
+
+// sass .\resurse\sass\nav.scss .\resurse\css\sass-compilat\nav.css

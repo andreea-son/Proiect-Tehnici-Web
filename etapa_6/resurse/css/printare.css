@@ -10,6 +10,7 @@
 
 header, body {
     color: black !important;
+    background-color: white !important;
 }
 
 header {
@@ -185,13 +186,13 @@ footer{
 }
 
 .stilizare-hr{
-    border-color: black;
+    border-color: black !important;
 }
 .stilizare-hr:after{
-    border-right-color: black;
+    border-right-color: black !important;
 } 
 .stilizare-hr:before{
-    border-left-color: black;
+    border-left-color: black !important;
 }
 
 #container-imagine{
@@ -200,4 +201,8 @@ footer{
 
 #art-produs{
     display: none;
+}
+
+.form-switch label{
+    background-color: transparent !important;
 }

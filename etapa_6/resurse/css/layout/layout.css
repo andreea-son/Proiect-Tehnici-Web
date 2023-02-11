@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 body{
     --culoare-text-negru: #332422;
     --culoare-text-alb:#EFE7E6;
@@ -9,6 +10,8 @@ body{
     --nuanta-roz-pal-inchis:#FFEBE8;
     --nuanta-roz-pal-deschis:#FFFBFB;
     --culoare-fundal: white;
+    --filtru: brightness(100%);
+    --culoare-gri: #ddd;
     
     --font-family: 'Red Hat Display';
     --font-family-heading: 'Playfair Display';
@@ -40,6 +43,8 @@ body.dark{
     --nuanta-roz-pal-inchis:#aa9d9c;
     --nuanta-roz-pal-deschis:#b1a8a8;
     --culoare-fundal: #c0b9b7;
+    --filtru: brightness(70%);
+    --culoare-gri: #787878;
     background-color: var(--culoare-fundal);
 }
 main{
@@ -296,12 +301,35 @@ footer{
     background-size: cover;
 }
 
+details ul{
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+details p{
+    padding-left: 20px;
+}
+
 details > summary {
-    list-style-type: ' + ';
+    list-style-type: none;
+}
+
+details > summary::before {
+    content: "\F4BB";
+    font-family: Bootstrap-icons;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 details[open] > summary {
-    list-style-type: ' - ';
+    list-style-type: none;
+}
+
+details[open] > summary::before {
+    content:"\F4B9";
+    font-family: Bootstrap-icons;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 details[open] > summary {
@@ -392,7 +420,7 @@ video::cue {
 
 #imagine-magazin{
     position:relative;
-	background-image:url(../../imagini/diverse/magazin.png);
+	background-image:url(../../imagini/diverse/magazin-mare.png);
 	background-size:cover;
 	width: 500px;
 	height: 500px;
@@ -437,11 +465,10 @@ video::cue {
     color: var(--culoare-text-alb);
 }
 
-#buton{
-    color: var(--culoare-fundal) !important;
-    background-color: var(--culoare-principala) !important;
-}
-
 #buton:focus, #buton{
     border: none !important;
+}
+
+img, iframe, video, .image, .btn, .form-range{
+    filter: var(--filtru);
 }

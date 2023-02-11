@@ -78,15 +78,15 @@ input[type="radio"]{
     height: 15px;
     vertical-align: middle;
     border: 2px solid var(--culoare-fundal);
-    outline: 1px solid #ddd;
+    outline: 1px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
     border-radius: 50%;
     margin-right: 0.1rem;
 }
 
 input[type="radio"]:hover{
-    background-color: #ddd;
-    border-color: #ddd;
+    background-color: var(--culoare-gri);
+    border-color: var(--culoare-gri);
 }
 input[type="radio"]:checked, input[type="radio"]:checked:hover{
     background-color: var(--culoare-principala);
@@ -94,7 +94,7 @@ input[type="radio"]:checked, input[type="radio"]:checked:hover{
 }
 input[type="text"]{
     border-radius: 6px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
 }
 
 input[type='range'] {
@@ -141,17 +141,17 @@ input[type="checkbox"]{
     height: 15px;
     margin-right: 0.1rem;
     margin-bottom: -0.1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
     border-radius: 10%;
 }
 input[type="checkbox"]:hover{
-    background-color: #ddd;
+    background-color: var(--culoare-gri);
 }
 input[type="checkbox"]:checked {
     background-color: var(--culoare-principala);
     border: 2px solid var(--culoare-fundal);
-    outline: 1px solid #ddd;
+    outline: 1px solid var(--culoare-gri);
 }
 option:checked{
     background-color: var(--culoare-principala);
@@ -161,19 +161,19 @@ option:hover{
 }
 #sel-pret{
     vertical-align: top;
-    border: 1px solid #ddd;
+    border: 1px solid var(--culoare-gri);
     border-radius: 10%;
     margin-bottom: 5px;
     background-color: var(--culoare-fundal);
 }
 #inp-livrare{
     border-radius: 6px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
 }
 #sel-flori{
     border-radius: 6px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
     margin-bottom: 5px;
     background-color: var(--culoare-fundal);
 }
@@ -182,13 +182,11 @@ option:hover{
     margin-bottom: 5px;
     background-color: var(--culoare-fundal);
     border-radius: 6px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
 }
 #butoane-filtre button{
     margin-right: 1%;
     margin-top: 1%;
-    background-color: var(--culoare-principala) !important;
-    color: var(--culoare-fundal) !important;
 }
 #div-culoare, #div-ocazie{
     display: inline-block;
@@ -202,6 +200,9 @@ option:hover{
     vertical-align: top;
     margin-right: 1rem;
 }
+#sel-pret{
+    overflow-y: hidden;
+}
 #p-suma{
     display: inline;
 }
@@ -211,3 +212,4 @@ option:hover{
 #inp-nume{
     background-color: var(--culoare-fundal);
 }
+

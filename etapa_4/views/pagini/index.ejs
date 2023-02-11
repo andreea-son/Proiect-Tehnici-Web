@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="ro">
     <head>
-        <%- include("../fragmente/head.ejs") %>
-        <link rel="stylesheet" href="/Resurse/css/galerie-statica.css">
-        <link rel="stylesheet" href="/Resurse/css/galerie-statica-500.css">
+        <%- include("../fragmente/head.ejs"); %>
     </head>
     <body>
         <header>
-            <div class="image"></div>
-            <%- include("../fragmente/header.ejs") %>
+            <%- include("../fragmente/header.ejs"); %>
         </header>
         <main>
             <div id="grid-pagina">
                 <div id="despre">
                     <h1 class="heading"><i class="fa-regular fa-circle-question"></i> Cine suntem?</h1>
-                    <h2 class="text-dark">Istoria florariei noastre</h2>
-                    <p>Magazinul nostru a luat nastere in anul 1990. Floraria a inceput ca o mica afacere de familie. In timp, pasiunea, traditia si dedicarea au transformat-o intr-o poveste de succes, care continua pana in zilele noastre. In prezent, <b>Buticul cu flori</b> a devenit una dintre cele mai indragite florarii bucurestene, credem noi datoria valorilor care se reflecta in munca noastra de zi cu zi: daruire deplina, entuziasm si dorinta constanta de perfectionare.</p> 
-                    <hr class="stilizare-hr">
-                    <h2 class="text-dark">Informatii generale</h2>
+                    <h2 class="text-dark heading">Daruieste amintiri</h2>
+                    <p>Un scurt video despre importanta pretuirii lucrurilor marunte, cum ar fi o floare primita in dar.</p>
+                    <video width="560" height="315" poster="/resurse/imagini/diverse/poster.png" controls preload="auto">
+                        <source src="/resurse/video/video-flori.mp4" type="video/mp4">
+                        <source src="/resurse/video/video-flori.ogv" type="video/ogv">
+                        <track default src="/resurse/vtt/caption_ro.vtt" kind="captions" srclang="ro" label="romana">
+                        <track src="/resurse/vtt/caption_en.vtt" kind="captions" srclang="en" label="engleza">
+                    </video>
+                    <h2 class="text-dark heading">Istoricul florariei noastre</h2>
+                    <p>Magazinul nostru a luat nastere in anul 1990. Floraria a inceput ca o mica afacere de familie. In timp, pasiunea, traditia si dedicarea au transformat-o intr-o poveste de succes, care continua pana in zilele noastre. In prezent, <b>Buticul cu flori</b> a devenit una dintre cele mai indragite florarii bucurestene, credem noi datoria valorilor care se reflecta in munca noastra de zi cu zi: daruire deplina, entuziasm si dorinta constanta de perfectionare.</p>
+                    <div id="container-imagine" style="width: max-content;">
+                        <div id="imagine-magazin"></div>
+                        <p style="text-align: center;"><em>Primul nostru magazin - din Academiei 14 - la 2 ani de la deschidere</em></p>
+                    </div>
+                    <h2 class="text-dark heading">Informatii generale</h2>
                     <details>
                         <summary>Ce oferim?</summary>
                         <ul>
@@ -36,7 +44,7 @@
                     <div class="stilizare-link"> 
                         <details>
                             <summary>Cum puteti comanda?</summary>
-                            <p>Comenzile pot fi efectuate atat pe site, cat si telefonic, descarcand catalogul nostru de produse:&ensp;<a type="button" href="Resurse/Catalog.pdf" target="blank" class="btn text-light bg-primary"><i class="fa-solid fa-download"></i> Catalog</a></p>
+                            <p>Comenzile pot fi efectuate atat pe site, cat si telefonic, descarcand catalogul nostru de produse:&ensp;<a role="button" href="resurse/Catalog.pdf" id="buton" class="btn text-light bg-primary active" aria-pressed="true"><i class="fa-solid fa-download"></i> Catalog</a></p>
                         </details>
                     </div>
                 </div>
@@ -106,84 +114,48 @@
                 <div id="zona">
                     <div id="favorite">
                         <h1 class="heading"><i class="fa-regular fa-heart"></i> Favorite de sezon</h1>
-                        <div id="grid-galerie">
-                            <%  var d=new Date();
-                                var luna_curenta=d.getMonth();
-                                if (luna_curenta == 11 || luna_curenta == 0 || luna_curenta == 1) {
-                                    for (let imag of locals.imagini) {     
-                                    var v_luni=['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'];
-                                    var luna_r=v_luni[luna_curenta];             
-                                    if (imag.luni && imag.luni.includes(luna_r)) { %>
-                                            <figure>
-                                                <picture>
-                                                    <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" alt="imagine">
-                                                    <img src="<%- imag.fisier %>" alt="imagine">
-                                                </picture>
-                                                <figcaption><%- imag.descriere %></figcaption>
-                                            </figure>
-                            <%          }
-                                    }
-                                } 
-                            %>
-                        </div>
-                        <section>
-                            <div id="container">
-                                <div id="text">Primavara
-                                <div id="text-reflectat">Primavara</div>
-                                </div>
-                            </div>
-                            <p>Primavara este anotimpul iubirii. Astfel, de Dragobete si <i>Valentine's Day</i> ti-am pregatit o varietate de buchete de flori atent alease pentru a le darui celor dragi tie.</p>
-                        </section>
-                        <section>
-                            <h2 class="heading">Vara</h2>
-                            <p>Vara aceasta iti oferim o selectie de buchete incarcate cu parfumul delicat al florilor de camp.</p>
-                        </section>
-                        <section>
-                            <h2 class="heading">Toamna</h2>
-                            <p>Nuantele aramii ale toamnei se regasesc in buchetele noastre dedicate acestui anotimp al descatusarii culorilor.</p>
-                        </section>
-                        <section>
-                            <h2 class="heading">Iarna</h2>
-                            <p>Iarna este anotimpul cel mai potrivit pentru a darui, de aceea avem pentru tine o selectie de buchete festive, pentru a oferi cadouri de neuitat.</p>
-                        </section>
+                        <%  var d=new Date();
+                            var luna_curenta=d.getMonth();
+                            if (luna_curenta == 11 || luna_curenta == 0 || luna_curenta == 1) 
+                            {
+                        %>
+                            <section>
+                                <div class="text">Iarna<div class="text-reflectat">Iarna</div></div>
+                                <div class="paragraf"> este anotimpul cel mai potrivit pentru a darui, de aceea avem pentru tine o selectie de buchete festive, pentru a oferi cadouri de neuitat.</div>
+                            </section>
+                        <%
+                            }
+                            if (luna_curenta == 2 || luna_curenta == 3 || luna_curenta == 4) 
+                            {
+                        %>
+                            <section>
+                                <div class="text">Primavara<div class="text-reflectat">Primavara</div></div>
+                                <div class="paragraf"> este anotimpul iubirii, asa ca ti-am pregatit o varietate de buchete de flori atent alease pentru a le darui celor dragi tie.</div>
+                            </section>
+                        <%
+                            } 
+                            if (luna_curenta == 5 || luna_curenta == 6 || luna_curenta == 7) 
+                            {
+                        %>
+                            <section>
+                                <div class="text">Vara<div class="text-reflectat">Vara</div></div>
+                                <div class="paragraf"> aceasta iti oferim o selectie de buchete incarcate cu parfumul delicat al florilor de camp.</div>
+                            </section>
+                        <%
+                            } 
+                            if (luna_curenta == 8 || luna_curenta == 9 || luna_curenta == 10) 
+                            {
+                        %>
+                            <section>
+                                <div class="text">Toamna<div class="text-reflectat">Toamna</div></div>
+                                <div class="paragraf"> aceasta nuantele aramii si tonurile calde se regasesc in buchetele noastre dedicate anotimpului descatusarii culorilor.</div>
+                            </section>
+                        <%
+                            } 
+                        %>
                     </div>
-                    <div id="galerie">
-                        <h1 class="heading"><i class="fa-regular fa-lightbulb"></i> Inspiratie</h1>
-                        <p>Am pregatit o galerie de imagini cu cateva <b>aranjamente florale</b> atent <em>culese</em> ca inspiratie pentru nunta ta.</p>
-                        <div id="grid-galerie">
-                            <%  var num_shown = 0;
-                                for (let imag of locals.imagini) { 
-                                    var d = new Date();
-                                    var curr_h = d.getHours();
-                                    var curr_m = d.getMinutes();
-                                    curr_m += 60 * curr_h;
-                                    const myArray = imag.timp.split("-");
-                                    var h_m1 = myArray[0];
-                                    var h_m2 = myArray[1];
-                                    const myArray1 = h_m1.split(":");
-                                    var h1 = parseInt(myArray1[0]);
-                                    var m1 = parseInt(myArray1[1]);
-                                    m1 += 60 * h1;
-                                    const myArray2 = h_m2.split(":");
-                                    var h2 = parseInt(myArray2[0]);
-                                    var m2 = parseInt(myArray2[1]);
-                                    m2 += 60 * h2;
-                                if (((m2 < m1) && (!(curr_m >= m2 && curr_m < m1))) || m1 <= curr_m && curr_m < m2) { %>
-                                    <figure>
-                                        <picture>
-                                            <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)" />
-                                            <img src="<%- imag.fisier %>" alt="imagine" title="<%- imag.descriere %>">
-                                        </picture>
-                                        <figcaption><%- imag.descriere %></figcaption>
-                                    </figure>
-                            <%  
-                                    num_shown++;
-                                }
-                                if(num_shown == 10)
-                                    break;
-                                } 
-                            %>
-                        </div>
+                    <div id="inspiratie">
+                        <%- include("../fragmente/galerie-statica.ejs"); %>
                     </div>
                     <div id="recomandari">
                         <h1 class="heading"><i class="fa-regular fa-thumbs-up"></i> Recomandari</h1>
@@ -200,24 +172,10 @@
                     </div>
                 </div>
             </div>
-            <a href="#" id="link-top"><div id="sageata">&#129081;</div><span class="tooltip">Sus</span></a>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-            <script>
-                function checkOffset() {
-                    var a=$(document).scrollTop()+window.innerHeight;
-                    var b=$('footer').offset().top;
-                    if (a<b) {
-                        $('#link-top').css('bottom', '5px');
-                    } else {
-                        $('#link-top').css('bottom', (5+(a-b))+'px');
-                    }
-                }
-                $(document).ready(checkOffset);
-                $(document).scroll(checkOffset);
-            </script>
+            <%- include("../fragmente/link-top.ejs"); %>
         </main>
         <footer>
-            <%- include("../fragmente/footer.ejs") %>
+            <%- include("../fragmente/footer.ejs"); %>
         </footer>
     </body>
 </html>

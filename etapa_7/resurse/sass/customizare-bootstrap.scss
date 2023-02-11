@@ -1,0 +1,40 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with (
+    $primary: #FAAFA5,
+    $secondary: #F76855,
+    $light: white,
+    $dark: #332422,
+    $grid-breakpoints: (
+        xs: 0,
+        sm: 500px,
+        md: 700px,
+        lg: 1000px,
+        xl: 1500px,
+        xxl: 1900px
+    ),
+    $border-radius: .5rem,
+    $border-radius-sm: 1rem,
+    $border-radius-lg: 3rem,
+    $border-radius-xl: 5rem,
+    $border-radius-2xl: 10rem,
+    $border-radius-pill: 50rem,
+
+    $h1-font-size: 2.4rem,
+    $h2-font-size: 2rem,
+    $h3-font-size: 1.7rem,
+    $h4-font-size: 1.4rem,
+    $h5-font-size: 1.1rem,
+    $h6-font-size: 1rem,
+
+    $font-family-sans-serif: 'Red Hat Display',
+
+    $headings-font-family: 'Playfair Display',
+    $headings-margin-bottom: 1rem,
+    $headings-font-weight: 550,
+
+    $input-btn-padding-y: .1rem,
+    $input-btn-padding-x: .5rem,
+
+    $form-range-thumb-width: 1.5rem,
+    $form-range-track-bg: #F76855
+);
+// sass .\resurse\sass\customizare-bootstrap.scss .\resurse\css\biblioteci\customizare-bootstrap.css

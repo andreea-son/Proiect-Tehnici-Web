@@ -1,0 +1,107 @@
+header{
+    position: relative;
+    z-index: 99;
+}
+
+ul.meniu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+ul.meniu>li, ul.meniu ul>li {
+    height: var(--inaltime-meniu);
+    width: var(--latime-buton);
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    line-height: var(--inaltime-meniu);
+}
+ul.meniu li:hover {
+    overflow: visible;
+}
+ul.meniu ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    position: relative;
+    display: none;
+}
+ul.meniu li a:hover, ul.meniu li div:hover{
+    color: var(--culoare-text-maro);
+}
+ul.meniu li a {
+    display: block;
+    height: 100%;
+}
+ul.meniu a, ul.meniu div {
+    color: var(--culoare-text-alb);
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--culoare-principala);
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+ul.meniu>li:hover ul {
+    animation-name: animatie_submeniu;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform-origin: 50% 0;
+    display: block;
+}
+.copil-li-acasa{
+    display: inline-block;
+}
+#li-acasa div:nth-child(2){
+    color: var(--culoare-principala);
+}
+#li-acasa:hover div{
+    color: var(--culoare-text-maro);
+}
+#li-acasa div:hover, #li-acasa div:hover~div{
+    transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+@keyframes animatie_submeniu {
+    0%{
+        transform: scale(0, 0);
+    }
+    50%{
+        transform: scale(0.5, 0.5);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+nav {
+    height: var(--inaltime-meniu);
+    width: 100%;
+    top: 0;
+    margin: auto;
+}
+
+#hamburger, #ch-menu {
+    display: none;
+}
+#bara-meniu {
+    background-color: var(--culoare-principala);
+    height: var(--inaltime-meniu);
+    width: 100vw;
+    top: 0;
+    position: fixed;
+}
+.form-check-label i{
+    margin-left: -30px;
+}
+.form-switch{
+    margin-left: 5px;
+}
+.form-check-input{
+    display: inline !important;
+}

@@ -1,5 +1,4 @@
-//setCookie("a",10, 1000)
-function setCookie(nume, val, timpExpirare){//timpExpirare in milisecunde
+function setCookie(nume, val, timpExpirare){
     d=new Date();
     //d.setDate(d.getDate() + timpExpirare);
     d.setTime(d.getTime()+timpExpirare);
@@ -8,21 +7,21 @@ function setCookie(nume, val, timpExpirare){//timpExpirare in milisecunde
 }
 
 function getCookie(nume){
-    vectorParametri=document.cookie.split(";") // ["a=10","b=ceva"]
+    vectorParametri=document.cookie.split(";");
     for(let param of vectorParametri){
         if (param.trim().startsWith(nume+"="))
-            return param.split("=")[1]
+            return param.split("=")[1];
     }
     return null;
 }
 
 function deleteCookie(nume){
-    console.log(`${nume}; expires=${(new Date()).toUTCString()}`)
+    console.log(`${nume}; expires=${(new Date()).toUTCString()}`);
     document.cookie=`${nume}=0; expires=${(new Date()).toUTCString()}`;
 }
 
 function deleteAllCookies(){
-    var cookies=document.cookie.split(";"); // ["a=10","b=ceva"]
+    var cookies=document.cookie.split(";");
     for(let cookie of cookies){
         var cookieName = cookie.split("=")[1];
         document.cookie=`${cookieName}=0; expires=${(new Date()).toUTCString()}`;

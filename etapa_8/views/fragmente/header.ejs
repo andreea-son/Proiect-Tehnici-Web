@@ -1,0 +1,90 @@
+<h1 id="print-titlu" class="heading">
+    Buticul cu flori
+</h1>
+<div id="print-watermark">
+    Son<br>Andreea
+</div>
+<div id="print-banner">
+    Acesta este un proiect școlar. <span id="mesaj-cookies">Acceptati cookie-uri? <button id="ok_cookies" class="btn btn-secondary text-light">Ok</button></span>
+</div>
+<h2 id="print-titlu-meniu" class="heading">
+    Meniu:
+</h2>
+<div class="image"></div>
+<div id="bara-meniu">
+    <label id="hamburger" for="ch-menu">
+        <img src="/resurse/imagini/diverse/Hamburger_icon_alb.png" alt="menu">
+    </label>
+    <input id="ch-menu" type="checkbox">
+    <nav>
+        <ul class="meniu">
+            <li id="li-acasa">
+                <a href="/home"><div class="copil-li-acasa"><i class="fa-solid fa-house"></i></div><div class="copil-li-acasa"> Acasa</div></a>
+                <ul>
+                    <li><a href="/home#despre">Cine suntem?</a></li>
+                    <li><a href="/home#orar">Orarul magazinelor</a></li>
+                    <li><a href="/home#favorite">Favorite de sezon</a></li>
+                    <li><a href="/home#inspiratie">Galerie de imagini</a></li>
+                    <li><a href="/home#recomandari">Recomandari</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/serviciu-clienti"><div>Serviciu clienti</div></a>
+                <ul>
+                    <li><a href="/serviciu-clienti#program">Program functionare</a></li>
+                    <li><a href="/serviciu-clienti#conditii">Termeni si conditii</a></li>
+                    <li><a href="/serviciu-clienti#intrebari">Intrebari frecvente</a></li>
+                    <li><a href="/serviciu-clienti#info-contact">Contact</a></li>
+                </ul>
+            </li>
+            <li><a href="/galerie"><div>Galerie de imagini</div></a></li>
+            <li>
+                <div>Produse</div>
+                <ul>
+                    <li><a href="/produse">Toate</a></li>
+                    <% 
+                        for(let idx in locals.tipuri) { %>
+                            <li><a href="/produse?tip=<%- locals.tipuri[idx].unnest %>"><%- locals.tipuri[idx].unnest %></a></li>
+                    <%  } %>
+                </ul>
+            </li>
+            <li><a href="/cos_virtual">Cos produse</a></li>
+            <%  if(locals.utilizator) { %>
+                    <li>
+                        <div>Chat-uri</div>
+                        <ul>
+                            <li><a href="/chat">Contact</a></li>
+                            <li><a href="/comentarii">Comentarii</a></li>
+                        </ul>
+                    </li>
+            <%      if(locals.utilizator.rol.cod == 'admin') { %>
+                    <li>
+                        <div>Administrator</div>
+                        <ul>
+                            <li><a id="utilizatori" href="/utilizatori">Utilizatori</a></li>
+                            <li><a id="administrare" href="/administrare">Administrare</a></li>
+                            <li><a id="facturi" href="/facturi">Facturi</a></li>
+                            <li><a id="grafice" href="/grafice">Grafice</a></li>
+                        </ul>
+                    </li>
+            <%      } else if(locals.utilizator.rol.cod == 'comun') { %>
+                        <li><a id="comenzi" href="/comenzi">Comenzi</a></li>
+            <%      }
+                }
+            %>
+            <%  if(locals.utilizator) { %>
+                    <li><a id="profil" href="/profil">Profil</a></li>
+                    <li><a id="delogare" href="/delogare">Delogare</a></li>
+                    <li><a id="stergere_cont" href="/stergere_cont">Sterege cont</a></li>
+            <%  } else { %>
+                    <li><a href="/autentificare">Autentificare</a></li>
+            <%  } %>
+            <li>
+                <div class="form-check form-switch">
+                    <input class="form-check-input bg-secondary mt-2" type="checkbox" role="switch" id="tema" checked>
+                    <label class="form-check-label" for="tema"><i style=" cursor: pointer; color: var(--culoare-text-alb) !important;" class="fa-regular fa-moon"></i></label>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>

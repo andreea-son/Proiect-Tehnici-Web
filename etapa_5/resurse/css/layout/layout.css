@@ -9,7 +9,9 @@ body{
     --nuanta-roz-pal-inchis:#FFEBE8;
     --nuanta-roz-pal-deschis:#FFFBFB;
     --culoare-fundal: white;
-    
+    --filtru: brightness(100%);
+    --culoare-gri: #ddd;
+
     --font-family: 'Red Hat Display';
     --font-family-heading: 'Playfair Display';
     --font-size-1700: 16px;
@@ -40,6 +42,8 @@ body.dark{
     --nuanta-roz-pal-inchis:#aa9d9c;
     --nuanta-roz-pal-deschis:#b1a8a8;
     --culoare-fundal: #c0b9b7;
+    --filtru: brightness(70%);
+    --culoare-gri: #787878;
     background-color: var(--culoare-fundal);
 }
 main{
@@ -287,7 +291,7 @@ footer{
 .heading i{
     color: var(--culoare-principala);
 }
-.image{
+#image-background{
     background-image: url(../../imagini/background/buticul_cu_flori_1700px.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -400,7 +404,7 @@ video::cue {
 
 #imagine-magazin{
     position:relative;
-	background-image:url(../../imagini/diverse/magazin.png);
+	background-image:url(../../imagini/diverse/magazin-mare.png);
 	background-size:cover;
 	width: 500px;
 	height: 500px;
@@ -440,12 +444,11 @@ video::cue {
 }
 
 #tema{
-    border: none;
-    background-color: transparent;
     color: var(--culoare-text-alb);
+    background-color: transparent;
+    border: none;
 }
 
-#buton{
-    color: var(--culoare-fundal) !important;
-    background-color: var(--culoare-principala) !important;
+img, iframe, video, .image, .btn{
+    filter: var(--filtru);
 }

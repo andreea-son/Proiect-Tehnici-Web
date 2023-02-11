@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <%- include("../fragmente/head.ejs");  %> 
+        <link rel="stylesheet" href="/resurse/css/eroare.css">
+    </head>
+    <body>
+        <header>
+            <%- include("../fragmente/header.ejs");  %>
+        </header>
+        <main>
+            <div id="err-coloane">
+                <div id="err-imag">
+                    <img src="<%- locals.imagine %>">
+                </div>
+                <div id="err-text">
+                    <h1 class="heading"><%- locals.titlu %></h1>
+                    <h2 class="heading"><%- locals.text %></h2>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <%- include("../fragmente/footer.ejs");  %> 
+        </footer>
+    </body>
+</html>

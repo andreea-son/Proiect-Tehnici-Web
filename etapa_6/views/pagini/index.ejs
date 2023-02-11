@@ -26,22 +26,24 @@
                         <p style="text-align: center;"><em>Primul nostru magazin - din Academiei 14 - la 2 ani de la deschidere</em></p>
                     </div>
                     <h2 class="text-dark heading">Informatii generale</h2>
-                    <details>
-                        <summary>Ce oferim?</summary>
-                        <ul>
-                            <li>Livrare <em>oriunde</em> in Bucuresti in 3 ore</li>
-                            <li>Livrare gratuita pentru comenzi de minim 200 de lei</li>
-                            <li>Felicitare cadou cu mesaj personalizat</li>
-                            <li>Posibilitatea plasarii de comenzi anonime</li>
-                        </ul>
-                    </details>
-                    <div class="stilizare-link">
+                    <div class="det-sum">
+                        <details>
+                            <summary>Ce oferim?</summary>
+                            <ul>
+                                <li>Livrare <em>oriunde</em> in Bucuresti in 3 ore</li>
+                                <li>Livrare gratuita pentru comenzi de minim 200 de lei</li>
+                                <li>Felicitare cadou cu mesaj personalizat</li>
+                                <li>Posibilitatea plasarii de comenzi anonime</li>
+                            </ul>
+                        </details>
+                    </div>
+                    <div class="stilizare-link det-sum">
                         <details>
                             <summary>Unde ne puteti gasi?</summary>
                             <p>Va asteptam cu drag atat online, cat si in magazinele fizice cu o selectie variata de <b>trandafiri criogenati</b>, <b>buchete de flori</b> si <b>aranjamente florale</b> pentru orice ocazie sau eveniment! Mai multe informatii puteti gasi <a href="#contact">aici</a>.</p>
                         </details>
                     </div>
-                    <div class="stilizare-link"> 
+                    <div class="stilizare-link det-sum"> 
                         <details>
                             <summary>Cum puteti comanda?</summary>
                             <p>Comenzile pot fi efectuate atat pe site, cat si telefonic, descarcand catalogul nostru de produse:&ensp;<a role="button" href="resurse/Catalog.pdf" id="buton" class="btn text-light bg-primary active" aria-pressed="true"><i class="fa-solid fa-download"></i> Catalog</a></p>
@@ -106,7 +108,7 @@
                 <div id="utilizator-statistici">
                     <h1 class="heading"><i class="fa-solid fa-chart-pie"></i> Date utilizator si statistici</h1>
                     <p>IP-ul utilizatorului curent: <%- locals.ip %></p>
-                    <p id="p-ult-prod">Ultimul produs accesat: <a id="ultimul-produs"></a></p>
+                    <p id="p-ult-prod" class="stilizare-link">Ultimul produs accesat: <a id="ultimul-produs"></a></p>
                 </div>
                 <div id="site-server">
                     <h1 class="heading"><i class="fa-solid fa-table"></i> Date site si server</h1>

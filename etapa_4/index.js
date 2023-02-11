@@ -4,19 +4,16 @@ app=express();
 
 app.set("view engine","ejs");
 console.log("Cale proiect:", __dirname);
-app.use("/Resurse", express.static(__dirname+"/Resurse"));
+app.use("/resurse", express.static(__dirname+"/resurse"));
 
 const sharp=require("sharp");
-// const {Client}=require("pg");
-// const ejs= require("ejs");
-// const sass=require("sass");
 
-// var client= new Client({database:"",
-//         user:"", 
-//         password:"", 
-//         host:"", 
-//         port:5432});
-// client.connect();
+const sass=require("sass");
+var cssBootstrap=sass.compile(__dirname+"/resurse/sass/customizare-bootstrap.scss",{sourceMap:true});
+fs.writeFileSync(__dirname+"/resurse/css/biblioteci/customizare-bootstrap.css",cssBootstrap.css);
+
+var cssGalerie=sass.compile(__dirname+"/resurse/sass/galerie.scss",{sourceMap:true});
+fs.writeFileSync(__dirname+"/resurse/css/galerie/galerie-statica.css",cssGalerie.css);
 
 obGlobal={
     erori:null,
@@ -24,27 +21,34 @@ obGlobal={
 }
 
 function createImages(){
-    var continutFisier=fs.readFileSync(__dirname+"/Resurse/json/galerie.json").toString("utf8");
+    var continutFisier=fs.readFileSync(__dirname+"/resurse/json/galerie.json").toString("utf8");
     var obiect=JSON.parse(continutFisier);
-    var dim_mediu = 300;
-    var dim_mic = 150;
+    var dim_mediu = 350;
+    var dim_mic = 300;
     obGlobal.imagini=obiect.imagini;
 
     obGlobal.imagini.forEach(function (elem){
         [numeFisier, extensie] = elem.fisier.split(".");
+        elem.fisier = obiect.cale_galerie + "/" + elem.fisier;
+
         if(!fs.existsSync(__dirname+"/"+obiect.cale_galerie+"/mediu/")){
             fs.mkdirSync(__dirname+"/"+obiect.cale_galerie+"/mediu/");
         }
         elem.fisier_mediu=obiect.cale_galerie+"/mediu/"+numeFisier+".webp";
-        elem.fisier = obiect.cale_galerie + "/" + elem.fisier;
         sharp(__dirname+"/"+elem.fisier).resize(dim_mediu).toFile(__dirname+"/"+elem.fisier_mediu);
+
+        if(!fs.existsSync(__dirname+"/"+obiect.cale_galerie+"/mic/")){
+            fs.mkdirSync(__dirname+"/"+obiect.cale_galerie+"/mic/");
+        }
+        elem.fisier_mic=obiect.cale_galerie+"/mic/"+numeFisier+".webp";
+        sharp(__dirname+"/"+elem.fisier).resize(dim_mic).toFile(__dirname+"/"+elem.fisier_mic);
     });
     console.log(obGlobal.imagini);
 }
 createImages();
 
 function createErrors(){
-    var continutFisier=fs.readFileSync(__dirname+"/Resurse/json/erori.json").toString("utf8");
+    var continutFisier=fs.readFileSync(__dirname+"/resurse/json/erori.json").toString("utf8");
     obGlobal.erori=JSON.parse(continutFisier);
 }
 createErrors();
@@ -69,7 +73,13 @@ app.get(["/","/index","/home"],function(req, res){
     res.render("pagini/index", {ip: req.ip, imagini:obGlobal.imagini});
 });
 
-app.get(["*.ejs"],function(req, res){
+app.get("/galerie", function(req, res){
+    res.render('pagini/galerie', {
+      imagini: obGlobal.imagini
+    });
+});
+
+app.get("*.ejs",function(req, res){
     console.log("url:", req.url);
     renderError(res, 403);
 });
@@ -91,9 +101,5 @@ app.get("/*",function(req, res){
     });
 });
 
-app.get('/serviciu-clienti', (_req, res) => {
-    res.render('pagini/serviciu-clienti')
-})
-
-app.listen(8080);
+app.listen(8088);
 console.log("Serverul a pornit!");

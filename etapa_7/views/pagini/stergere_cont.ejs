@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <%- include('../fragmente/head'); %>
+    </head>
+    <body>
+        <header>
+            <%- include('../fragmente/header'); %>
+        </header>
+        <main>
+            <h1>Stergerea contului dvs.</h1>
+            <form id="form" method="post" class="date" action="/stergere_cont" enctype="multipart/form-data">
+                <label for="parola_delete">Confirmare parola</label><br>
+                <input type="password" id="parola_delete" name="parola_delete" class="form-control w-25" required><br>
+                <input class="btn btn-primary text-light mb-2" type="submit" value="Stergere cont">
+            </form>
+            <p style="color: red;"><%- locals.mesaj %></p>
+        </main>
+        <footer>
+            <%- include('../fragmente/footer'); %>
+        </footer>
+    </body>
+</html>

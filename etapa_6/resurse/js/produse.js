@@ -224,6 +224,9 @@ window.addEventListener("load",  function(){
         if(contor_prod == 0){
             document.getElementById("fara-produse").style.display="block";
         }
+        else{
+            document.getElementById("fara-produse").style.display="none";
+        }
     }
 
     document.getElementById("resetare").onclick=function(){
@@ -301,10 +304,10 @@ window.addEventListener("load",  function(){
             rezultat.style.color="var(--culoare-text-negru)";
             rezultat.style.width="300px";
             rezultat.style.textAlign="center";
-            rezultat.style.border="2px solid #ddd";
+            rezultat.style.border="2px solid var(--culoare-gri)";
             rezultat.style.borderRadius="6px";
             rezultat.style.position="fixed";
-            rezultat.style.backgroundColor="white";
+            rezultat.style.backgroundColor="var(--culoare-fundal)";
             var ps=document.getElementById("p-suma");
             ps.parentNode.insertBefore(rezultat,ps.nextSibling);
             rezultat.onclick= function(){

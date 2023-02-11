@@ -179,6 +179,9 @@ window.addEventListener("load",  function(){
         if(contor_prod == 0){
             document.getElementById("fara-produse").style.display="block";
         }
+        else{
+            document.getElementById("fara-produse").style.display="none";
+        }
     }
 
     document.getElementById("resetare").onclick=function(){

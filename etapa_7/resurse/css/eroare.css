@@ -1,0 +1,13 @@
+#err-imag img{
+    display: block;
+    width: 100%;
+}
+#err-coloane{
+    display:flex;
+    padding-top:1em;
+    padding-left:1em;
+    align-items: center;
+}
+#err-text{
+    padding-left:1em;
+}

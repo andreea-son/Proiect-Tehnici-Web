@@ -5,13 +5,20 @@
     </head>
     <body>
         <header>
-            <div class="image"></div>
             <%- include("../fragmente/header.ejs") %>
         </header>
         <main>
             <div id="grid-pagina">
                 <div id="despre">
                     <h1 class="heading"><i class="fa-regular fa-circle-question"></i> Cine suntem?</h1>
+                    <h2 class="heading">Video introductiv</h2>
+                    <video width="560" height="315" poster="/resurse/imagini/diverse/poster.png" controls preload="auto">
+                        <source src="/resurse/video/video-flori.mp4" type="video/mp4">
+                        <source src="/resurse/video/video-flori.ogv" type="video/ogv">
+                        <track default src="/resurse/vtt/caption_ro.vtt" kind="captions" srclang="ro" label="romana">
+                        <track src="/resurse/vtt/caption_en.vtt" kind="captions" srclang="en" label="engleza">
+                    </video>
+                    <h2 class="heading">Istoric</h2>
                     <p>Magazinul nostru a luat nastere in anul 1990. Floraria a inceput ca o mica afacere de familie. In timp, pasiunea, traditia si dedicarea au transformat-o intr-o poveste de succes, care continua pana in zilele noastre. In prezent, <b>Buticul cu flori</b> a devenit una dintre cele mai indragite florarii bucurestene, credem noi datoria valorilor care se reflecta in munca noastra de zi cu zi: daruire deplina, entuziasm si dorinta constanta de perfectionare.</p> 
                     <details>
                         <summary>Ce oferim?</summary>
@@ -31,7 +38,7 @@
                     <div class="stilizare-link"> 
                         <details>
                             <summary>Cum puteti comanda?</summary>
-                            <p>Comenzile pot fi efectuate atat pe site, cat si telefonic, descarcand <a href="Resurse/Catalog.pdf" download>catalogul</a> nostru.</p>
+                            <p>Comenzile pot fi efectuate atat pe site, cat si telefonic, descarcand <a href="resurse/Catalog.pdf" download>catalogul</a> nostru.</p>
                         </details>
                     </div>
                 </div>
@@ -54,23 +61,23 @@
                         <tbody>
                             <tr>
                                 <td>Calea Mosilor nr.133</td>
-                                <td>+40721954672</td>
+                                <td>0721954672</td>
                                 <td>Andrei Ursu</td>
                                 <td rowspan="3">Lu-Vi: 7:00-22:00<br>Sa-Du: 10:00-21:00</td>
                             </tr>
                             <tr>
                                 <td>Sisesti nr.201</td>
-                                <td>+40731080842</td>
+                                <td>0731080842</td>
                                 <td>Lucia Popescu</td>
                             </tr>
                             <tr>
                                 <td>Kiseleff nr.17B</td>
-                                <td>+40736933321</td>
+                                <td>0736933321</td>
                                 <td>David Gheorghiu</td>
                             </tr> 
                             <tr>
                                 <td>Academiei nr.14</td>
-                                <td>+40712345678</td>
+                                <td>0712345678</td>
                                 <td>Claudia Tunaru</td>
                                 <td>Lu-Du: Non Stop</td>
                             </tr>
@@ -92,7 +99,7 @@
                 </div>
                 <div id="utilizator-statistici">
                     <h1 class="heading"><i class="fa-solid fa-chart-pie"></i> Date utilizator si statistici</h1>
-                    <p>Ip-ul utilizatorului curent: <%- locals.ip %></p>
+                    <p>IP-ul utilizatorului curent: <%- locals.ip %></p>
                 </div>
                 <div id="site-server">
                     <h1 class="heading"><i class="fa-solid fa-table"></i> Date site si server</h1>
@@ -124,30 +131,14 @@
                         <div id="stilizare-ifr">
                             <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/8EMHiGKQa64" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <div id="stilizare-link-ifr">
-                                <div class="tab1"></div>
                                 <a target="ifr-video" class="tab1" href="https://www.youtube.com/embed/8EMHiGKQa64"><div>Nunta</div></a>
-                                <div class="tab2"></div>
                                 <a target="ifr-video" class="tab2" href="https://www.youtube.com/embed/50Whog9cZw8"><div>Diverse</div></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="#" id="link-top"><div id="sageata">&#129081;</div><span class="tooltip">Sus</span></a>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-            <script>
-                function checkOffset() {
-                    var a=$(document).scrollTop()+window.innerHeight;
-                    var b=$('footer').offset().top;
-                    if (a<b) {
-                        $('#link-top').css('bottom', '5px');
-                    } else {
-                        $('#link-top').css('bottom', (5+(a-b))+'px');
-                    }
-                }
-                $(document).ready(checkOffset);
-                $(document).scroll(checkOffset);
-            </script>
+            <%- include("../fragmente/link-top.ejs") %>
         </main>
         <footer>
             <%- include("../fragmente/footer.ejs") %>

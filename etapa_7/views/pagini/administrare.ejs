@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ro">
+	<head>
+		<%- include("../fragmente/head") %>
+	</head>
+    <script>
+        function afisare_produse(){
+            if(document.getElementById("rad_prod1").checked == true) {
+                document.getElementById("administare_produse").style.display = "block";
+            }
+            else if(document.getElementById("rad_prod1").checked == false){
+                document.getElementById("administare_produse").style.display = "none";
+            }
+        }
+    </script>
+	<body>
+		<header>
+			<%- include("../fragmente/header") %>
+		</header>
+		<main>
+            <h1>Administrare produse</h1>
+            <div class="btn-group btn-group-toggle col container" data-toggle="buttons">
+                <div>
+                    <input id="rad_prod1" name="gr_rad" value="Vizualizare produse" type="radio" onchange="afisare_produse()">
+                    <label style="margin-right: 5px" class="btn btn-outline-primary" for="rad_prod1">Vizualizare produse</label>
+                </div>
+                <div>
+                    <input id="rad_prod2" name="gr_rad" value="Adaugare produs" type="radio">
+                    <label style="margin-right: 5px" class="btn btn-outline-primary" for="rad_prod2">Adaugare produs</label>
+                </div>
+                <div>
+                    <input id="rad_prod3" name="gr_rad" value="Stergere prdus" type="radio">
+                    <label style="margin-right: 5px" class="btn btn-outline-primary" for="rad_prod3">Stergere prdus</label>
+                </div>
+                <div>
+                    <input id="rad_prod4" name="gr_rad" value="Modificare produs" type="radio">
+                    <label style="margin-right: 5px" class="btn btn-outline-primary" for="rad_prod4">Modificare produs</label>
+                </div>
+            </div>
+			<table style="display: none;" id="administare_produse" class="table table-lg">
+                <tr class="table-secondary">
+                    <th scope="col">#</th>
+                    <th scope="col">Nume</th>
+                    <th scope="col">Descriere</th>
+                    <th scope="col">Imagine</th>
+                    <th scope="col">Tip produs</th>
+                    <th scope="col">Ocazie</th>
+                    <th scope="col">Pret</th>
+                    <th scope="col">Numar fire</th>
+                    <th scope="col">Data adaugare</th>
+                    <th scope="col">Culoare</th>
+                    <th scope="col">Floari continute</th>
+                    <th scope="col">Ridicare personala</th>
+                </tr>
+                <% 
+                    var zile=["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+                    var luni=["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                    for (var i = 0; i < produse.length; i++) {
+                        var data_adaugare = new Date(produse[i].data_adaugare);
+                        var data_formatata = zile[data_adaugare.getDay()] + ", " + data_adaugare.getDate() + "-" + luni[data_adaugare.getMonth()] + "-" + data_adaugare.getFullYear();
+                %>
+                        <tr scope="row" class="table-primary">
+                            <td><%= produse[i].id %></td>
+                            <td><%= produse[i].nume %></td>
+                            <td><%= produse[i].descriere %></td>
+                            <td><%= produse[i].imagine %></td>
+                            <td><%= produse[i].tip_produs %></td>
+                            <td><%= produse[i].ocazie %></td>
+                            <td><%= produse[i].pret %></td>
+                            <td><%= produse[i].num_fire %></td>
+                            <td><%= data_formatata %></td>
+                            <td><%= produse[i].culoare %></td>
+                            <td><%= produse[i].flori_continute %></td>
+                            <td><%= produse[i].ridicare_personala %></td>
+                        </tr>
+                <%  } %>
+            </table>
+            <form id="form_prod" method="post" class="date" action="<%= locals.action %>" enctype="multipart/form-data">
+                <label style="margin-bottom: 10px;" for="nume">Nume</label>
+                <input type="text" name="nume" id="nume" class="form-control w-25" required>
+                <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_nume" class="error" aria-live="assertive"></small>
+                <label style="margin-bottom: 10px;" for="descriere">Descriere</label>
+                <input type="text" id="descriere" name="descriere" class="form-control w-25" required>
+                <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_descriere" class="error" aria-live="assertive"></small>
+                <label style="margin-bottom: 10px;" for="imagine">Imagine</label>
+                <input type="text" id="imagine" name="imagine" class="form-control w-25" required>
+                <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_imagine" class="error" aria-live="assertive"></small>
+                <label id="l_parola_noua" style="margin-bottom: 10px; display: none;" for="parola_noua">
+                    <span>Parola noua</span> <br>
+                    <small>Va contine minim o litera mare, o litera mica, 2 cifre, caracterul punct</small>
+                </label>
+                <input style="display: none;" type="password" id="parola_noua" name="parola_noua" class="form-control w-25" required>
+                <small id="mesaj_parola_noua" style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" class="error" aria-live="assertive"></small>
+                <label id="l_parola" style="margin-bottom: 10px;" for="parola">
+                    <span>Parola</span> <br>
+                    <small id="format_parola">Va contine minim o litera mare, o litera mica, 2 cifre, caracterul punct</small>
+                </label>
+                <input type="password" id="parola" name="parola" class="form-control w-25" required>
+                <small id="mesaj_parola" style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" class="error" aria-live="assertive"></small>
+                <label style="margin-bottom: 10px;" id="l_parola_confirm" for="parola_confirm">Confirma parola</label>
+                <input type="password" id="parola_confirm" name="parola_confirm" class="form-control w-25" required>
+                <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_confirmare" class="error" aria-live="assertive"></small>
+                <label style="margin-bottom: 10px;" for="email">Adresa email</label>
+                <input type="email" id="email" name="email" class="form-control w-25" required>
+                <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_email" class="error" aria-live="assertive"></small>
+                <label style="margin-bottom: 10px; display: block;" for="data">Data nasterii</label>
+                <input style="margin-bottom: 10px;" type="date" id="data" name="data" value="2005-01-01" min="1900-01-01" max="2005-01-01">
+                <label style="margin-bottom: 10px; display: block;" for="culoare_chat">Culoare chat</label>
+                <select style="margin-bottom: 10px;" name="culoare_chat" id="culoare_chat">
+                    <option value="blue">Albastru</option>
+                    <option value="red">Rosu</option>
+                    <option value="green">Verde</option>
+                    <option value="black" selected="selected">Negru</option>
+                </select>
+                <label style="margin-bottom: 10px; display: block;" id="problema_vedere" style="display:block;">
+                    <div>Probleme vedere</div>
+                    <input type="checkbox" id="problema_vedere_ch" name="problema_vedere_ch" value="true" autocomplete="off">
+                    <i style="display: none;" class="bi bi-check-square"></i>
+                    <i class="bi bi-square"></i>
+                    <span>Da</span>
+                </label>
+                <label style="margin-bottom: 10px;" for="fotografie">Fotografie</label>
+                <input type="file" name="fotografie" class="form-control w-25" id="fotografie" accept=".jpg, .jpeg, .png" style="display:block;">
+                <small id="mesaj_invalid" class="error" aria-live="assertive" style="color: red; display: block; margin-top: 10px; margin-bottom: 10px;"></small>
+                <input id="buton_submit" class="btn btn-primary text-light mb-2" type="submit" value="Creare Cont">
+                <input id="buton_reset" class="btn btn-primary text-light mb-2" type="reset" value="Reseteaza">    
+            </form>
+		</main>
+        <footer>
+            <%- include("../fragmente/footer") %>
+        </footer>
+	</body>
+</html>

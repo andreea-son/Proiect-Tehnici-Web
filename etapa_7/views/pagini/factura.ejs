@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Factură</title>
+		<style>
+			body{
+				counter-reset: cnt 0;
+			}
+			#tabl{
+				border-collapse:collapse;
+			}
+			tbody tr{
+				counter-increment: cnt 1;
+				overflow: visible;
+				text-align: center;
+			}
+			#tabl td, #tabl th{
+				border:1px solid black;
+			}
+			p{color:grey};
+			#container-tabel{
+				overflow: visible;
+			}
+			tbody tr td:nth-child(1)::after{
+				content: counter(cnt);
+			}
+			#container-tabel::after{
+				content:"Numar produse: " counter(cnt);
+				display: block;
+			}
+		</style>
+		<script src="<%- locals.protocol%><%- locals.domeniu %>/resurse/js/factura.js"></script>
+	</head>
+	<body>
+		<h1>Factură Buticul cu flori</h1>
+		<p>Stimate domn/doamna <%-locals.utilizator.nume %> <%-locals.utilizator.prenume %>, aveți aici lista de produse achiziționate.</p> 
+        <p>Contul de pe care a fost efectuata tranzactia:</p>
+        <p><img src="<%- locals.protocol%><%- locals.domeniu %>/resurse/imagini/qrcode/<%- locals.utilizator.id %>.png"></p>
+		<div id="container-tabel">
+			<table id="tabl">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Produs</th>
+						<th>Nume produs</th>
+						<th>Descriere produs</th>
+						<th>Ridicare personala</th>
+						<th>Ocazie</th>
+						<th>Preț</th>
+                        <th>Cantitate</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% 
+					var suma=0;
+                    var cantitati_prod = {};
+                    console.log("cantitati", locals.cantitati[0])
+                    for(let idx in locals.cantitati){
+                        var key = locals.cantitati[idx].split("-")[1];
+                        var value = locals.cantitati[idx].split("-")[0];
+                        cantitati_prod[key] = value;
+                    }
+
+					for (let prod of locals.produse) {
+                        suma+=parseFloat(prod.pret) * parseFloat(cantitati_prod[prod.id]);
+					%>
+						<tr>
+							<td>Num </td>
+							<td><img src="<%- locals.protocol%><%- locals.domeniu %>/resurse/imagini/produse/<%- prod.imagine%>"></td>
+							<td><%- prod.nume %></td>
+							<td><%- prod.descriere %></td>
+							<td><%- (prod.ridicare_personala ? "Da" : "Nu") %></td>
+							<td><%- prod.ocazie %></td>
+							<td><%- prod.pret %></td>
+                            <td><%- cantitati_prod[prod.id] %></td>
+						</tr>
+					<% } %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="8">Total: <%- suma %></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</body>
+</html>

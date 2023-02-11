@@ -60,7 +60,7 @@ app.get("/*",function(req, res){
 
 app.get('/serviciu-clienti', (_req, res) => {
     res.render('pagini/serviciu-clienti')
-})
+});
 
 app.listen(8080);
 console.log("Serverul a pornit!");

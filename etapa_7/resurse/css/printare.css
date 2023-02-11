@@ -1,0 +1,208 @@
+@page :left {
+    margin-left: 3cm;
+    margin-right: 1cm;
+}
+  
+@page :right {
+    margin-right: 3cm;
+    margin-left: 1cm;
+}
+
+header, body {
+    color: black !important;
+    background-color: white !important;
+}
+
+header {
+    /* position relative - pentru ca am nevoie de position absolute pentru banner */
+    position: relative;
+    text-align: center;
+    height: 100vh;
+
+    /* margin-left si margin-right - pentru ca vreau sa am acelasi margin ca si grid-ul paginii */
+    margin-left:var(--margin-main);
+    margin-right:var(--margin-main);
+}
+
+/* meniu */
+#print-titlu-meniu{
+    /* display: block - default-ul pentru heading */
+    display: block;
+    text-align: left;
+}
+
+nav{
+    /* am modificat margin-left inpoi la auto */
+    margin-left: auto;
+}
+
+#li-acasa i{
+    display: none;
+}
+
+header ul.meniu{
+    page-break-after: always;
+    /* display: block - default-ul pentru ul */
+    display: block !important;
+}
+
+#bara-meniu {
+    position: relative;
+    background-color: transparent !important;
+}
+
+header ul.meniu>li {
+    text-align: left !important;
+}
+
+ul.meniu a, ul.meniu div{
+    color: black !important;
+    background-color: transparent !important;
+}
+
+/* titlu site */
+header #print-titlu {
+    display: inline-block;
+    margin-top: 50vh;
+
+    color: black !important;
+}
+
+/* banner site */
+header #print-banner{
+    border: 4px inset black !important;
+    width: 70%;
+    display: block;
+    color: black !important;
+    background-color: transparent !important;
+    font-size: var(--font-size-1700);
+    position: absolute;
+    bottom: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+header #mesaj-cookies{
+    display: none;
+}
+
+/* watermark site */
+header #print-watermark {
+    width: 4cm;
+    height: auto;
+    border: 3px solid black;
+    border-radius: 6px;
+    opacity: 0.4;
+    position: fixed;
+    color: black !important;
+    font-weight: bold;
+    text-align: center;
+    bottom: 2px;
+    right: 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-pagina {
+    display: block;
+}
+
+footer {
+    page-break-before: always;
+}
+
+h1, h2 {
+    color: black !important;
+    font-weight: normal !important;
+}
+
+.heading i{
+    color: black !important;
+}
+
+#orar h1{
+    text-align: left;
+}
+
+a{
+    text-decoration: none;
+    font-weight: normal !important;
+    color: black !important;
+}
+
+b{
+    font-weight: normal;
+}
+
+em{
+    font-style: normal;
+}
+
+i{
+    font-style: normal;
+}
+
+.image {
+    display: none;
+}
+
+#stilizare-ifr, video, #link-top, #grid-galerie {
+    display: none;
+}
+
+table{
+    border-radius: 0px !important;
+}
+
+table tr>td, table th, table caption{
+    background-color: transparent !important;
+    color: black !important;
+}
+
+table, table th, table td{
+    border-color: black !important;
+}
+
+footer{
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.btn, button{
+    background-color: transparent !important;
+    color: black !important;
+    border-color: black !important;
+}
+
+.grid-produse, #filtre{
+    display: none;
+}
+
+.stilizare-hr{
+    border-color: black !important;
+}
+.stilizare-hr:after{
+    border-right-color: black !important;
+} 
+.stilizare-hr:before{
+    border-left-color: black !important;
+}
+
+#container-imagine{
+    display: none;
+}
+
+#art-produs{
+    display: none;
+}
+
+.form-switch label{
+    background-color: transparent !important;
+}

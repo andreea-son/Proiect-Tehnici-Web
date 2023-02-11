@@ -10,8 +10,25 @@
     vertical-align: middle;
     text-align: center;
     border-radius: 6px;
-    border: 5px double;
-    border-color: var(--culoare-principala);
     color: var(--culoare-text-negru);
-    background-color: var(--culoare-text-alb);
+
+    animation-name: animatie_banner;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform-origin: 0 100%;
+}
+
+@keyframes animatie_banner {
+    0%{
+        transform: scale(0, 0);
+        opacity: 0;
+        background-color: var(--culoare-principala);
+    }
+    100%{
+        transform: scale(1, 1);
+        opacity: 0.75;
+        background-color: var(--culoare-text-alb);
+    }
 }

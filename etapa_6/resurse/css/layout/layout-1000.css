@@ -15,7 +15,14 @@ th, td {
     height: 500px;
     background-size: cover;
 }
-
+#imagine-magazin{
+    position:relative;
+	background-image:url(../../imagini/diverse/magazin-mediu.png);
+	background-size:cover;
+	width: 350px;
+	height: 350px;
+    overflow: hidden;
+}
 .text-reflectat{
 	--translateX-init: calc(0.475 * var(--font-size-1000));
     --translateY-init: calc(-0.325 * var(--font-size-1000));

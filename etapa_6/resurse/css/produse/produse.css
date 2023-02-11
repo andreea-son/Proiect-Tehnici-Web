@@ -116,37 +116,36 @@ option:hover{
 }
 #sel-pret{
     vertical-align: top;
-    border: 1px solid #ddd;
+    border: 1px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
     border-radius: 0.5rem;
+    overflow-y: visible;
 }
 #inp-livrare{
     border-radius: 0.5rem;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
 }
 #sel-flori{
     border-radius: 0.5rem;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
 }
 #txt-descriere{
     border-radius: 0.5rem;
     vertical-align: top;
     background-color: var(--culoare-fundal);
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
 }
 #inp-nume{
     border-radius: 0.5rem;
-    border: 2px solid #ddd;
+    border: 2px solid var(--culoare-gri);
     background-color: var(--culoare-fundal);
 }
 
 #butoane-filtre button{
     margin-right: 1%;
     margin-top: 1%;
-    background-color: var(--culoare-principala);
-    color: var(--culoare-fundal);
 }
 #div-culoare, #div-ocazie{
     display: inline-block;

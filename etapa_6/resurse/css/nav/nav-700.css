@@ -27,13 +27,19 @@ ul.meniu li {
 }
 ul.meniu ul {
     width: 100%;
+    position: relative;
 }
+ul.meniu>li {
+    height: auto !important;
+}
+
 #li-acasa div:nth-child(2){
     display: none;
 }
 #li-acasa{
     background-color: var(--culoare-principala);
 }
+
 nav>ul.meniu{
     background-color: var(--culoare-principala);
     

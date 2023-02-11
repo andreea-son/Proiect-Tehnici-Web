@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <script type="text/javascript" src="/resurse/js/produs.js"></script>
+        <%- include("../fragmente/head") %>     
+    </head>
+    <body>
+    <header>
+        <%- include("../fragmente/header") %>
+    </header>
+    <main>
+        <section>
+            <h2>Pagina produs</h2>
+                <article id="art-produs">
+                    <h3><span class="prod-nume"><%- locals.prod.nume %></span></h3>
+                    <div>
+                        <figure class="imag-produs">
+                            <img  src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
+                        </figure>
+                        <p>Ocazie: <span class="prod-val-categorie"><%- locals.prod.ocazie%></span></p>
+                        <p>Descriere: <span class="prod-val-descriere"><%- locals.prod.descriere%></span></p>
+                        <p>Pret: <span class="prod-val-pret"><%- locals.prod.pret%></span> ron</p>
+                        <p>Culoare: <span class="prod-val-culoare"><%- locals.prod.culoare%></span></p>
+                        <p>Flori: <span class="prod-val-flori"><%- locals.prod.flori_continute%></span></p>
+                        <p>Numar fire: <span class="prod-val-fire"><%- locals.prod.num_fire%></span></p>
+                        <p>Data adaugarii: <time class="prod-val-data"><%- locals.prod.data_adaugare%></time></p>
+                        <p>Ridicare personala: <span class="prod-val-livrare"><%- locals.prod.ridicare_personala%></span></p>
+                    </div>
+                </article>
+        </section>
+    </main>
+    <footer>
+        <%- include("../fragmente/footer") %>
+    </footer>
+    </body>
+</html>

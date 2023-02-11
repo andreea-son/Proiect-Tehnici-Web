@@ -3,22 +3,35 @@ window.addEventListener("DOMContentLoaded",  function(){
     if(temaCurenta)
         document.body.classList.add(temaCurenta);
 
+    if(document.getElementsByClassName("fa-regular")[0].classList.contains("fa-sun") && !document.body.classList.contains("dark")){
+        document.getElementsByClassName("fa-regular")[0].classList.remove("fa-sun");
+        document.getElementsByClassName("fa-regular")[0].classList.add("fa-moon");
+    }
+
+    if(document.getElementsByClassName("fa-regular")[0].classList.contains("fa-moon") && document.body.classList.contains("dark")){
+        document.getElementsByClassName("fa-regular")[0].classList.remove("fa-moon");
+        document.getElementsByClassName("fa-regular")[0].classList.add("fa-sun");
+    }
+
     document.getElementById("tema").onclick=function(){
         if (document.body.classList.contains("dark")){
             document.body.classList.remove("dark");
             
             localStorage.removeItem("tema");
-            
-            document.getElementsByClassName("fa-sun")[0].style.display="none";
-            document.getElementsByClassName("fa-moon")[0].style.display="inline";
+
+            if(document.getElementsByClassName("fa-regular")[0].classList.contains("fa-sun")){
+                document.getElementsByClassName("fa-regular")[0].classList.remove("fa-sun");
+                document.getElementsByClassName("fa-regular")[0].classList.add("fa-moon");
+            }
         }
         else{
             document.body.classList.add("dark");
             localStorage.setItem("tema","dark");
-            document.body.classList.add("dark");
             
-            document.getElementsByClassName("fa-sun")[0].style.display="inline";
-            document.getElementsByClassName("fa-moon")[0].style.display="none";
+            if(document.getElementsByClassName("fa-regular")[0].classList.contains("fa-moon")){
+                document.getElementsByClassName("fa-regular")[0].classList.remove("fa-moon");
+                document.getElementsByClassName("fa-regular")[0].classList.add("fa-sun");
+            }
         }
     }
 });

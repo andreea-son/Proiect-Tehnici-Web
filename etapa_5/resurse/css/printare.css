@@ -10,6 +10,7 @@
 
 header, body {
     color: black !important;
+    background-color: white !important;
 }
 
 header {
@@ -166,4 +167,16 @@ table, table th, table td{
 footer{
     background-color: transparent !important;
     color: black !important;
+}
+
+#tema{
+    background-color: transparent !important;
+}
+
+.grid-produse, #filtre{
+    display: none !important;
+}
+
+#art-produs{
+    display: none !important;
 }

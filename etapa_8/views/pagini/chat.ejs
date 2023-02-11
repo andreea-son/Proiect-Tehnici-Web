@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ro">
+	<head>
+		<title>Contact</title>
+		<%- include("../fragmente/head") %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+			$("html, body").animate({
+			scrollTop: $('html, body').get(0).scrollHeight}, 1000);
+			$("#div-container").animate({
+			scrollTop: $('#div-container').get(0).scrollHeight}, 1000);
+			});
+		</script>
+		<script>
+			window.addEventListener("DOMContentLoaded", function(){
+				var form = document.getElementsByTagName("form")[0];
+				var textarea = document.getElementsByTagName("textarea")[0];
+				document.getElementById("buton_trimite").addEventListener("click", (event) => {
+        			event.preventDefault();
+					if(textarea.value == ""){
+						return;
+					}
+					else{
+						form.submit();
+					}
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<header>
+			<%- include("../fragmente/header") %>
+		</header>
+		<main>
+			<% if (locals.eroare){ %>
+				<h1><%- locals.eroare %></h1>
+			<% } else { %>
+			<h1>Trimiteti un mesaj către site</h1>
+            <form method="post" action="/chat">
+                <label>Mesajul dumneavoastră:<br/>
+                    <textarea cols="30" rows="5" name="mesaj" style="border-radius: 6px"></textarea>
+                </label><br>
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<div style="margin-right: 5px;">
+						<input id="i_rad4" checked name="gr_rad" value="nimic" type="radio">
+						<label class="btn btn-outline-primary" for="i_rad4">Nimic</label>
+					</div>
+					<div style="margin-right: 5px;">
+						<input id="i_rad0" name="gr_rad" value="happy" type="radio">
+						<label class="btn btn-outline-primary" for="i_rad0"><i class="fa-solid fa-face-smile"></i></label>
+					</div>
+					<div style="margin-right: 5px;">
+						<input id="i_rad1" name="gr_rad" value="neutral" type="radio">
+						<label class="btn btn-outline-primary" for="i_rad1"><i class="fa-solid fa-face-meh"></i></label>
+					</div>
+					<div style="margin-right: 5px;">
+						<input id="i_rad2" name="gr_rad" value="sad" type="radio">
+						<label class="btn btn-outline-primary" for="i_rad2"><i class="fa-solid fa-face-frown"></i></label>
+					</div>
+				</div>
+                <input class="btn btn-primary text-light" type="submit" value="Trimite" id="buton_trimite">
+            </form>
+			<section>
+				<h2 style="margin-left: 0; padding-left: 0">Mesaje:</h2>
+				<div id="div-container" style="overflow-y: scroll; max-height: 1000px;">
+				<% if (locals.mesaje) {
+					var mesajeSort=locals.mesaje.sort(function(a,b) {return (new Date(a.attributes.data)).getTime()-(new Date(b.attributes.data)).getTime()})
+					for (let msg of mesajeSort) {
+						console.log(msg.attributes.nume)
+						let dt=new Date(msg.attributes.data);
+						%>
+						<article class="mesaj-c">
+							<p style="display: inline;"><span class="nume"><b><%= msg.attributes.nume%> <%= msg.attributes.prenume%></b></span> <span><small><em><time datetime="<%= dt.getUTCDate() %>">(<%= dt.toLocaleString('ro-RO', { 
+														hour: 'numeric',
+														minute: 'numeric', 
+														second: 'numeric',
+													}) %></time>)</em></small></span>
+							<span> spune:</span></p>
+							<% if(msg.elements) { %>
+								<p><%= msg.elements[0].text %></p>
+							<% } %>
+						</article>
+						<% } %>
+					<% } %>
+				<% } %>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<%- include("../fragmente/footer") %>
+		</footer>
+	</body>
+</html>

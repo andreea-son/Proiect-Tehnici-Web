@@ -4,7 +4,7 @@
 body {
     font-size: var(--font-size-700) !important;
 }
-.image {
+#image-background{
     background-image: url(../../imagini/background/buticul_cu_flori_700px.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -12,6 +12,16 @@ body {
     height: 500px;
     background-size: cover;
 }
+
+#imagine-magazin{
+    position:relative;
+	background-image:url(../../imagini/diverse/magazin-mic.png);
+	background-size:cover;
+	width: 250px;
+	height: 250px;
+    overflow: hidden;
+}
+
 #orar {
     overflow-x: scroll;
 }

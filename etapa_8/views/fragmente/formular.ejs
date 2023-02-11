@@ -1,0 +1,50 @@
+<form id="form_inreg" method="post" class="date" action="<%= locals.action %>" enctype="multipart/form-data">
+    <label style="margin-bottom: 10px;" for="username">Username</label>
+    <input type="text" name="username" id="username" class="form-control w-25" required>
+    <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_username" class="error" aria-live="assertive"></small>
+    <label style="margin-bottom: 10px;" for="prenume">Prenume</label>
+    <input type="text" id="prenume" name="prenume" class="form-control w-25" required>
+    <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_prenume" class="error" aria-live="assertive"></small>
+    <label style="margin-bottom: 10px;" for="nume">Nume</label>
+    <input type="text" id="nume" name="nume" class="form-control w-25" required>
+    <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_nume" class="error" aria-live="assertive"></small>
+    <label id="l_parola_noua" style="margin-bottom: 10px; display: none;" for="parola_noua">
+        <span>Parola noua</span> <br>
+        <small>Va contine minim o litera mare, o litera mica, 2 cifre, caracterul punct</small>
+    </label>
+    <input style="display: none;" type="password" id="parola_noua" name="parola_noua" class="form-control w-25" required>
+    <small id="mesaj_parola_noua" style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" class="error" aria-live="assertive"></small>
+    <label id="l_parola" style="margin-bottom: 10px;" for="parola">
+        <span>Parola</span> <br>
+        <small id="format_parola">Va contine minim o litera mare, o litera mica, 2 cifre, caracterul punct</small>
+    </label>
+    <input type="password" id="parola" name="parola" class="form-control w-25" required>
+    <small id="mesaj_parola" style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" class="error" aria-live="assertive"></small>
+    <label style="margin-bottom: 10px;" id="l_parola_confirm" for="parola_confirm">Confirma parola</label>
+    <input type="password" id="parola_confirm" name="parola_confirm" class="form-control w-25" required>
+    <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_confirmare" class="error" aria-live="assertive"></small>
+    <label style="margin-bottom: 10px;" for="email">Adresa email</label>
+    <input type="email" id="email" name="email" class="form-control w-25" required>
+    <small style="margin-top: 10px; margin-bottom: 10px; display: block; color: red;" id="mesaj_email" class="error" aria-live="assertive"></small>
+    <label style="margin-bottom: 10px; display: block;" for="data">Data nasterii</label>
+    <input style="margin-bottom: 10px;" type="date" id="data" name="data" value="2005-01-01" min="1900-01-01" max="2005-01-01">
+    <label style="margin-bottom: 10px; display: block;" for="culoare_chat">Culoare chat</label>
+    <select style="margin-bottom: 10px;" name="culoare_chat" id="culoare_chat">
+        <option value="blue">Albastru</option>
+        <option value="red">Rosu</option>
+        <option value="green">Verde</option>
+        <option value="pink" selected="selected">Roz</option>
+    </select>
+    <label style="margin-bottom: 10px; display: block;" id="problema_vedere" style="display:block;">
+        <div>Probleme vedere</div>
+        <input type="checkbox" id="problema_vedere_ch" name="problema_vedere_ch" value="true" autocomplete="off">
+        <i style="display: none;" class="bi bi-check-square"></i>
+        <i class="bi bi-square"></i>
+        <span>Da</span>
+    </label>
+    <label style="margin-bottom: 10px;" for="fotografie">Fotografie</label>
+    <input type="file" name="fotografie" class="form-control w-25" id="fotografie" accept=".jpg, .jpeg, .png" style="display:block;">
+    <small id="mesaj_invalid" class="error" aria-live="assertive" style="color: red; display: block; margin-top: 10px; margin-bottom: 10px;"></small>
+    <input id="buton_submit" class="btn btn-primary text-light mb-2" type="submit" value="Creare Cont">
+    <input id="buton_reset" class="btn btn-primary text-light mb-2" type="reset" value="Reseteaza">    
+</form>

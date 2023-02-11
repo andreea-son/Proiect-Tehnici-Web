@@ -27,6 +27,10 @@ ul.meniu li {
 }
 ul.meniu ul {
     width: 100%;
+    position: relative;
+}
+ul.meniu>li {
+    height: auto !important;
 }
 #li-acasa div:nth-child(2){
     display: none;

@@ -1,5 +1,5 @@
 {
-    "cale_baza": "/Resurse/Imagini/erori",
+    "cale_baza": "/resurse/imagini/erori",
     "eroare_default":{
         "titlu":"Eroare",
         "text": "A survenit o eroare.",
@@ -10,7 +10,7 @@
             "identificator":404,
             "status":true,
             "titlu":"Eroare 404",
-            "text": "Pagina cautata nu a fost gasita.",
+            "text": "Ups... Pagina cautata nu a fost gasita.",
             "imagine":"lupa.png"
         },
         {

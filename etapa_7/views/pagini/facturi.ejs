@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <%- include("../fragmente/head") %>     
+    </head>
+    <body>
+        <header>
+            <%- include("../fragmente/header") %>
+        </header>
+        <main>
+            <h1>Istoric facturi</h1>
+            <% 
+                var zile=["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+                var luni=["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                for(let factura of locals.facturi){ 
+                    var data_adaugare = new Date(factura.data);
+                    var data_formatata = zile[data_adaugare.getDay()] + ", " + data_adaugare.getDate() + "-" + luni[data_adaugare.getMonth()] + "-" + data_adaugare.getFullYear();
+            %>
+                <details>
+                    <% if(data_adaugare.getMonth() == 0 || data_adaugare.getMonth() == 1 || data_adaugare.getMonth() == 11){ %>
+                        <summary><b>Utilizator</b> <%- factura.nume %> <%- factura.prenume %> <b>Data</b> <time style="color: #49b5c9"><%- data_formatata %></time></summary>
+                    <% } else if(data_adaugare.getMonth() == 2 || data_adaugare.getMonth() == 3 || data_adaugare.getMonth() == 4){ %>
+                        <summary><b>Utilizator</b> <%- factura.nume %> <%- factura.prenume %> <b>Data</b> <time style="color: #b76469"><%- data_formatata %></time></summary>
+                    <% } else if(data_adaugare.getMonth() == 5 || data_adaugare.getMonth() == 6 || data_adaugare.getMonth() == 7){ %>
+                        <summary><b>Utilizator</b> <%- factura.nume %> <%- factura.prenume %> <b>Data</b> <time style="color: #51cf5d"><%- data_formatata %></time></summary>
+                    <% } else if(data_adaugare.getMonth() == 8 || data_adaugare.getMonth() == 9 || data_adaugare.getMonth() == 10){ %>
+                        <summary><b>Utilizator</b> <%- factura.nume %> <%- factura.prenume %> <b>Data</b> <time style="color: #bb4913"><%- data_formatata %></time></summary>
+                    <% } %>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr scope="row" class="table-secondary">
+                                <th scope="col" style="padding: 5px">Nume produs</th>
+                                <th scope="col" style="padding: 5px">Pret unitar</th>
+                                <th scope="col" style="padding: 5px">Cantitate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let prod of factura.produse){ %>
+                                <tr scope="row" class="table-primary">
+                                    <td scope="col" style="padding: 5px"><%- prod.nume %></td>
+                                    <td scope="col" style="padding: 5px"><%- prod.pret %></td>
+                                    <td scope="col" style="padding: 5px"><%- prod.cantitate %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </details>  
+            <% } %>              
+        </main>
+        <footer>
+            <%- include("../fragmente/footer") %>
+        </footer>
+    </body>
+</html>

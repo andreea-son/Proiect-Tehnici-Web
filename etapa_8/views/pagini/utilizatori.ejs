@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <%- include("../fragmente/head") %>
+    </head>
+    <body>
+        <header>
+            <%- include("../fragmente/header") %>
+        </header>
+        <main>
+        <div class="afisaj">
+            <h1>Utilizatori</h1>
+            <div>
+                <table id="useri" class="table table-lg">
+                    <tr class="table-secondary">
+                        <th scope="col">Username</th>
+                        <th scope="col">Probleme vedere</th>
+                        <th scope="col" class="w-15">Fotografie</th>
+                        <th scope="col">Optiuni</th>
+                    </tr>
+                    <% for (var i = 0; i < useri.length; i++) { 
+                            if(useri[i].username != utilizator.username){
+                                var src_img
+                                var is_disabled;
+                                if(useri[i].fotografie == ""){
+                                    src_img = "/poze_uploadate/default.png";
+                                    is_disabled = true;
+                                }
+                                else{
+                                    src_img = "/poze_uploadate/" + useri[i].username + "/" + useri[i].fotografie;
+                                    is_disabled = false;
+                                }
+                            %>
+                            <tr scope="row" class="table-primary">
+                                <td><%= useri[i].username %></td>
+                                <td><%= useri[i].problema_vedere %></td>
+                                <td class="w-auto"><img src="<%-src_img%>"></td>
+                                <td>
+                                    <form id="form_stergere" method="post" class="date" action="/sterge/<%-useri[i].id%>" enctype="multipart/form-data">
+                                    <% if(is_disabled == true) { %>
+                                        <input type="submit" class="btn btn-primary text-light" value="Sterge fotografia" disabled>
+                                    <% } else if(is_disabled == false) { %>
+                                        <input type="submit" class="btn btn-primary text-light" value="Sterge fotografia">
+                                    <% } %>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                    <% } %>
+                </table>
+            </div>
+            <p style="color: green;"><%-locals.mesaj%></p>            
+        </div>
+    </main>
+    <footer>
+        <%- include("../fragmente/footer") %>
+    </footer>
+</body>
+</html>

@@ -18,11 +18,11 @@
     $border-radius-2xl: 10rem,
     $border-radius-pill: 50rem,
 
-    $h1-font-size: 2.5rem,
+    $h1-font-size: 2.4rem,
     $h2-font-size: 2rem,
-    $h3-font-size: 1.75rem,
-    $h4-font-size: 1.5rem,
-    $h5-font-size: 1.25rem,
+    $h3-font-size: 1.7rem,
+    $h4-font-size: 1.4rem,
+    $h5-font-size: 1.1rem,
     $h6-font-size: 1rem,
 
     $font-family-sans-serif: 'Red Hat Display',
@@ -33,15 +33,4 @@
 
     $input-btn-padding-y: .1rem,
     $input-btn-padding-x: .5rem
-
-
-    // culorile de background pentru minim 2 teme la alegere pe care aplicați tema cromatică schimbată (customizată de voi)
-    // culori de font (adică ale literelor. Precizare: nu neaparat pentru toata pagina, orice culoare de litere - de exemplu dintr-un buton)
-    // dimensiuni de ecran diferite pentru ecrane medii și mari
-    // dimensiunea razelor de border
-    // dimensiunea literelor  headingurilor (h1,h2 etc)
-    // familia de font implicită
-    // încă una sau mai mule variabile alese de voi
-
 );
-// sass .\Resurse\sass\customizare-bootstrap.scss .\Resurse\css\biblioteci\bootstrap-custom.css

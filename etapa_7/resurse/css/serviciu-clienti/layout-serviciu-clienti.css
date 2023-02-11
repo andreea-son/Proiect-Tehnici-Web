@@ -1,0 +1,40 @@
+#grid-serviciu-clienti{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr 4fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:"z-program z-program z-intrebari z-intrebari z-conditii"
+                        "z-program z-program z-intrebari z-intrebari z-politica"
+                        "z-contact z-contact z-contact z-contact z-contact"
+}
+#grid-serviciu-clienti > *{
+    margin: 0;
+    padding: var(--padding-main);
+}
+#info-contact{
+    grid-area:z-contact;
+}
+#program{
+    grid-area:z-program;
+}
+#intrebari{
+    grid-area:z-intrebari;
+}
+#conditii{
+    grid-area:z-conditii;
+}
+#politica{
+    grid-area:z-politica;
+}
+
+#info-contact p, #info-contact h2{
+    padding-left: 40px !important;
+}
+#program p{
+    padding-left: 40px !important;
+}
+#intrebari details{
+    padding-left: 40px !important;
+}
+#conditii p, #conditii h2{
+    padding-left: 40px !important;
+}

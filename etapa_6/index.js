@@ -70,31 +70,32 @@ function renderError(res, identificator, titlu, text, imagine){
         res.status(identificator).render("pagini/eroare", {titlu:titlu, text:text, imagine:imagine})
     }
     else{
-        res.render("pagini/eroare", {titlu:titlu, text:text, imagine:imagine, tipuri:obGlobal.tipuri});
+        res.render("pagini/eroare", {titlu:titlu, text:text, imagine:imagine});
     }
 }
 
+client.query("select * from unnest(enum_range(null::tipuri_flori))", function(err, rezTip){
+    if(err){
+        console.log(err);
+        renderError(res, 2);
+    }
+    else{
+        obGlobal.tipuri=rezTip.rows;
+    }
+});
+
 app.use("/*", function(req, res, next){
-    client.query("select * from unnest(enum_range(null::tipuri_flori))", function(err, rezTip){
-        if(err){
-            console.log(err);
-            renderError(res, 2);
-        }
-        else{
-            obGlobal.tipuri=rezTip.rows;
-        }
-    });
     res.locals.tipuri=obGlobal.tipuri;
     next();
 });
 
 app.get(["/","/index","/home"],function(req, res){
     console.log("url: /index");
-    res.render("pagini/index", {ip:req.ip, imagini:obGlobal.imagini, tipuri:obGlobal.tipuri});
+    res.render("pagini/index", {ip:req.ip, imagini:obGlobal.imagini});
 });
 
 app.get("/galerie", function(req, res){
-    res.render('pagini/galerie', {imagini: obGlobal.imagini, tipuri:obGlobal.tipuri});
+    res.render('pagini/galerie', {imagini: obGlobal.imagini});
 });
 
 app.get("/produse",function(req, res){
@@ -157,5 +158,5 @@ app.get("/*",function(req, res){
     });
 });
 
-app.listen(8080);
+app.listen(8088);
 console.log("Serverul a pornit!");

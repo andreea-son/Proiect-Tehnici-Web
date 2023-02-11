@@ -12,6 +12,14 @@ body {
     height: 500px;
     background-size: cover;
 }
+#imagine-magazin{
+    position:relative;
+	background-image:url(../../imagini/diverse/magazin-mic.png);
+	background-size:cover;
+	width: 250px;
+	height: 250px;
+    overflow: hidden;
+}
 #orar {
     overflow-x: scroll;
 }
