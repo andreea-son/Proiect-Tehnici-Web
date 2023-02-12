@@ -184,20 +184,27 @@
                 <div id="site-server">
                     <h1 class="heading"><i class="fa-solid fa-table"></i> Date site si server</h1>
                     <%
-                        dataServer=new Date();
+                        var dataServer = new Date();  
+                        userOffsetFromGmt = dataServer.getTimezoneOffset() / 60; 
+                        dataServer.setMilliseconds(dataServer.getMilliseconds() - userOffsetFromGmt*3600000);
                         sirData=dataServer.getHours()+":"+dataServer.getMinutes()+":"+dataServer.getSeconds()
                     %>
                         <p>Ora locala server:<span id="data_server"><%= sirData %></span></p>
                         <script>
+                            function zero(nr){
+                                if (nr<10) return "0"+nr;
+                                return nr;
+                            }
+                                                
                             function actualizeazaElemData(id_div){
                                 var data_div=document.getElementById(id_div);
                                 if (data_div.innerHTML!="")
                                 {
                                     var timp=data_div.innerHTML.split(":")
-                                    var dt=new Date(2000,1,15, timp[0],timp[1], timp[2] );
+                                    var dt=new Date(2000,1,15, timp[0], timp[1], timp[2] );
                                 }
                                 else
-                                    var dt=new Date();
+                                var dt = new Date();  
                                 dt.setSeconds(dt.getSeconds()+1)
                                 data_div.innerHTML=zero(dt.getHours())+":"+zero(dt.getMinutes())+":"+zero(dt.getSeconds());
                             }
