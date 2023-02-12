@@ -188,16 +188,7 @@
                         sirData=dataServer.getHours()+":"+dataServer.getMinutes()+":"+dataServer.getSeconds()
                     %>
                         <p>Ora locala server:<span id="data_server"><%= sirData %></span></p>
-                        <p>Ora dumneavoastra:<span id="data_client"></span></p>
                         <script>
-                            function zero(nr){
-                                if (nr<10) return "0"+nr;
-                                return nr;
-                            }
-                            
-                            d=new Date()
-                            document.getElementById("data_client").innerHTML=zero(d.getHours())+":"+zero(d.getMinutes())+":"+zero(d.getSeconds());
-                    
                             function actualizeazaElemData(id_div){
                                 var data_div=document.getElementById(id_div);
                                 if (data_div.innerHTML!="")
@@ -211,7 +202,6 @@
                                 data_div.innerHTML=zero(dt.getHours())+":"+zero(dt.getMinutes())+":"+zero(dt.getSeconds());
                             }
                             function actualizeazaData(){
-                                actualizeazaElemData("data_client");
                                 actualizeazaElemData("data_server");
                             }
                             actualizeazaData()
