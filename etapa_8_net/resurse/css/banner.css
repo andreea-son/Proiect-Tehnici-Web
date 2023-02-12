@@ -1,0 +1,34 @@
+#print-banner{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 25vw;
+    height: 5vw;
+    font-size: 0.75vw;
+    line-height: 5vw;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 6px;
+    color: var(--culoare-text-negru);
+
+    animation-name: animatie_banner;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform-origin: 0 100%;
+}
+
+@keyframes animatie_banner {
+    0%{
+        transform: scale(0, 0);
+        opacity: 0;
+        background-color: var(--culoare-principala);
+    }
+    100%{
+        transform: scale(1, 1);
+        opacity: 0.75;
+        background-color: var(--culoare-text-alb);
+    }
+}

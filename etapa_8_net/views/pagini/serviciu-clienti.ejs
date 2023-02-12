@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <%- include("../fragmente/head.ejs"); %>
+    </head>
+    <body>
+        <header>
+            <%- include("../fragmente/header.ejs"); %>
+        </header>
+        <main>
+            <div id="grid-serviciu-clienti">
+                <div id="info-contact">
+                    <h1 class="heading"><i class="fa-solid fa-phone-volume"></i> Contact</h1>
+                    <p>Buticul cu flori va este alaturi de peste 30 de ani, perioada in care am continuat sa crestem prin prisma tuturor sugestiilor, cat si a criticilor primite. Tocmai de aceea, cele trei decenii de experienta ne-au facut sa intelegem ca mai presus de orice trebuie sa pretuim relatia cu clientii nostri. </p>
+                    <h2 class="heading">Plasare, anulare si modificare comenzi</h2>
+                    <p class="stilizare-link">In cazul in care doriti sa plasati o comanda altfel decat din contul dumneavoastra online, ne puteti scrie la adresa de email <a href="mailto:comenzi@buticul-cu-flori.com">comenzi@buticul-cu-flori.com</a>.</p>
+                    <h2 class="heading">Reclamatii si sesizari</h2>
+                    <div class="stilizare-link">
+                        <p>Reclamatiile le puteti face la adresa de email <a href="mailto:reclamatii@buticul-cu-flori.com">reclamatii@buticul-cu-flori.com</a>.</p>
+                    </div>
+                    <h2 class="heading">Informatii generale</h2>
+                    <div class="stilizare-link">
+                        <p>Pentru orice fel de nelamuriri sau informatii generale despre serviciile noastre ne puteti contacta pe adresa de email <a href="mailto:buticul-cu-flori@yahoo.com">buticul-cu-flori@yahoo.com</a>.</p>
+                    </div>
+                    <h2 class="heading">Retele de socializare</h2>
+                    <div class="stilizare-link">
+                        <p>Va vom raspunde in maxim 24 de ore de la sesizare pe pagina noastra de <a target="_blank" href="https://www.facebook.com/profile.php?id=100037623483651">facebook</a>.</p>
+                    </div>
+                </div>
+                <div id="program">
+                    <h1 class="heading"><i class="fa-solid fa-clock"></i> Program de functionare</h1>
+                    <p>Luni-Vineri 07:00-22:00 (livrari intre 07:00-22:00)</p>
+                    <p>Sambata-Duminica 09:00-21:00 (livrari intre 10:00-21:00)</p>
+                    <p>Sarbatori legale 09:00-17:00 (livrari intre 10:00-17:00)</p>
+                </div>
+                <div id="politica">
+                    <h1 class="heading"><i class="fa-solid fa-file-lines"></i> Politica de confidentialitate</h1>
+                    <a role="button" href="resurse/Politica-de-confidentialitate.pdf" class="btn text-light bg-primary active" aria-pressed="true"><i class="fa-solid fa-download"></i> Download</a></p>
+                </div>
+                <div id="conditii">
+                    <h1 class="heading"><i class="fa-solid fa-file-signature"></i> Termeni si conditii</h1>
+                    <a role="button" href="/termeni_conditii" class="btn text-light bg-primary active" aria-pressed="true">Termeni si conditii</a>
+                </div>
+                <div id="intrebari">
+                    <h1 class="heading"><i class="fa-solid fa-circle-question"></i> Intrebari frecvente</h1>
+                    <details>
+                        <summary>Cum plasez o comanda?</summary>
+                        <p>Pentru a plasa o comanda direct de pe site este necesar ca mai intai sa fiti autentificati in aplicatie.</p>
+                        <p class="stilizare-link">Pentru a plasa o comanda prin email scrieti-ne la adresa <a href="mailto:comenzi@buticul-cu-flori.com">comenzi@buticul-cu-flori.com</a> </p>
+                    </details>
+                    <details>
+                        <summary>Care sunt modalitatile de plata acceptate?</summary>
+                        <p>
+                            Singura modalitate de plata acceptata este plata la livrare
+                        </p>
+                    </details>
+                    <details>
+                        <summary>In cat timp voi primi comanda?</summary>
+                        <p>Termenul de livarare al unei comnzi este de 2-5 zile lucratoare, insa in perioada reducerilor aceasta se poate prelungi pana la 7 zile lucratoare.</p>
+                    </details>
+                    <br>
+                </div>
+            </div>
+            <%- include("../fragmente/link-top.ejs"); %>
+        </main>
+        <footer>
+            <%- include("../fragmente/footer.ejs"); %>
+        </footer>
+    </body>
+</html>

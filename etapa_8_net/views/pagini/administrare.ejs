@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ro">
+	<head>
+		<%- include("../fragmente/head") %>
+	</head>
+	<body>
+		<header>
+			<%- include("../fragmente/header") %>
+		</header>
+		<main>
+            <h1>Administrare produse</h1>
+            <div class="btn-group btn-group-toggle col container" data-toggle="buttons">
+                <div>
+                    <div>
+                        <input id="rad_prod1" name="gr_rad_prod" value="Vizualizare produse" type="radio">
+                        <label style="margin-right: 5px" class="btn btn-outline-primary mb-2" for="rad_prod1">Vizualizare produse
+                        </label>
+                        <div id="vizualizare" style="display: none;">
+                            <table class="table table-lg">
+                                <tr class="table-secondary">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nume</th>
+                                    <th scope="col">Descriere</th>
+                                    <th scope="col">Imagine</th>
+                                    <th scope="col">Tip produs</th>
+                                    <th scope="col">Ocazie</th>
+                                    <th scope="col">Pret</th>
+                                    <th scope="col">Numar fire</th>
+                                    <th scope="col">Data adaugare</th>
+                                    <th scope="col">Culoare</th>
+                                    <th scope="col">Floari continute</th>
+                                    <th scope="col">Ridicare personala</th>
+                                </tr>
+                                <% 
+                                    var zile=["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+                                    var luni=["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                                    for (var i = 0; i < produse.length; i++) {
+                                        var data_adaugare = new Date(produse[i].data_adaugare);
+                                        var data_formatata = zile[data_adaugare.getDay()] + ", " + data_adaugare.getDate() + "-" + luni[data_adaugare.getMonth()] + "-" + data_adaugare.getFullYear();
+                                %>
+                                        <tr scope="row" class="table-primary">
+                                            <td><%= produse[i].id %></td>
+                                            <td><%= produse[i].nume %></td>
+                                            <td><%= produse[i].descriere %></td>
+                                            <td><%= produse[i].imagine %></td>
+                                            <td><%= produse[i].tip_produs %></td>
+                                            <td><%= produse[i].ocazie %></td>
+                                            <td><%= produse[i].pret %></td>
+                                            <td><%= produse[i].num_fire %></td>
+                                            <td><%= data_formatata %></td>
+                                            <td><%= produse[i].culoare %></td>
+                                            <td><%= produse[i].flori_continute %></td>
+                                            <td><%= produse[i].ridicare_personala %></td>
+                                        </tr>
+                                <%  } %>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <input id="rad_prod2" name="gr_rad_prod" value="Adaugare produs" type="radio">
+                        <label style="margin-right: 5px" class="btn btn-outline-primary mb-2" for="rad_prod2">Adaugare produs</label>
+                    </div>
+                    <div>
+                        <input id="rad_prod3" name="gr_rad_prod" value="Stergere prdus" type="radio">
+                        <label style="margin-right: 5px" class="btn btn-outline-primary mb-2" for="rad_prod3">Stergere prdus</label>
+                        <form method="post" action="/administrare">
+                            <div id="vizualizare">
+                                <h2 style="margin-left: 0; padding-left: 0;">Alegeti ID-ul produsului</h2>
+                                <div class="btn-group btn-group-toggle col container" data-toggle="buttons">
+                                    <% for (var i = 0; i < locals.produse.length; i++) { %>
+                                        <div>
+                                            <input id="rad_<%-locals.produse[i].id%>" name="gr_rad_id" value="<%-locals.produse[i].id%>" type="radio">
+                                            <label style="margin-right: 5px" class="btn btn-outline-primary mb-2" for="rad_<%-locals.produse[i].id%>"><%-produse[i].id%></label>
+                                        </div>
+                                    <% } %>
+                                </div>        
+                            </div>
+                            <input class="btn btn-primary text-light mb-2" type="submit" value="Sterge produsul">
+                        </form>
+                    </div>
+                    <div>
+                        <input id="rad_prod4" name="gr_rad_prod" value="Modificare produs" type="radio">
+                        <label style="margin-right: 5px" class="btn btn-outline-primary mb-2" for="rad_prod4">Modificare produs</label>
+                    </div>
+                </div>
+            </div>
+            <small style="color: green; display: block;"><%- locals.mesaj %></small>
+		</main>
+        <footer>
+            <%- include("../fragmente/footer") %>
+        </footer>
+	</body>
+</html>

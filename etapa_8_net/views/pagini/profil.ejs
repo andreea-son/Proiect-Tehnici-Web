@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+	<head>
+		<%- include("../fragmente/head") %>
+		<script>
+			window.addEventListener("DOMContentLoaded", function(){
+				document.getElementById("username").value="<%= locals.utilizator.username %>";
+				document.getElementById("username").readOnly=true;
+				document.getElementById("nume").value="<%= locals.utilizator.nume %>";
+				document.getElementById("prenume").value="<%= locals.utilizator.prenume %>";
+				document.getElementById("email").value="<%= locals.utilizator.email %>";
+                var data = new Date("<%= locals.utilizator.data_nasterii %>");
+                var month = data.getMonth()+1;
+                if(month < 10){
+                    month = "0" + month;
+                }
+				var date = data.getDate();
+				if(date < 10){
+					date = "0" + date;
+				}
+                document.getElementById("data").value=data.getFullYear()+"-"+month+"-"+date;
+				document.getElementById("l_parola_confirm").remove();
+                document.getElementById("parola_confirm").remove();
+				var optiuni=document.getElementById("culoare_chat").options
+				for (let opt of optiuni)
+					if (opt.value=="<%= locals.utilizator.culoare_chat %>")
+						opt.selected=true;
+                if("<%= locals.utilizator.problema_vedere %>" == "true")
+                    document.getElementById("problema_vedere_ch").checked = true;
+                else{
+                    document.getElementById("problema_vedere_ch").checked = false;
+                }
+                var source_img;
+				if("<%= locals.utilizator.fotografie %>" == ""){
+					source_img = "/poze_uploadate/default.png";
+				}
+				else{
+					source_img = "/poze_uploadate/<%= locals.utilizator.username%>/<%= locals.utilizator.fotografie %>";
+				}
+                document.getElementById("poza_profil").setAttribute("src", source_img);
+
+                if("<%=locals.culoare%>"){
+					var paragraf = document.querySelectorAll("main p")[0];
+					paragraf.style.color = "<%=locals.culoare%>";
+				}
+				document.getElementById("buton_submit").value = "Editeaza";
+				document.getElementById("buton_reset").style.display = "none";
+				document.getElementById("format_parola").style.display = "none";
+				document.getElementById("l_parola_noua").style.display = "block";
+				document.getElementById("parola_noua").style.display = "block";
+			});
+		</script>
+		<script type="text/javascript" src="/resurse/js/verificari.js"></script>
+	</head>
+	<body>
+		<header>
+			<%- include("../fragmente/header") %>
+		</header>
+		<main>
+            <h1>Profil</h1>
+			<h2 style="margin-left: 0; padding-left: 0;"><%- locals.utilizator.username %></h2>
+            <img style="margin-bottom: 10px; border: double 5px var(--culoare-principala)" id="poza_profil" src="" alt="nu ati incarcat poza de profil">
+			<%- include("../fragmente/formular",{action:"/profil"}) %>
+            <p><%- locals.mesaj %></p>
+		</main>
+        <footer>
+            <%- include("../fragmente/footer") %>
+        </footer>
+	</body>
+</html>

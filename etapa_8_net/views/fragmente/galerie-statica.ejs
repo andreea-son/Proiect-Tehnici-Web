@@ -1,0 +1,42 @@
+<h1 class="heading" id="heading-galerie"><i class="fa-regular fa-image"></i> Galerie de imagini</h1>
+<div id="grid-galerie">
+    <%  var num_shown = 0;
+        for (let imag of locals.imagini) { 
+            var d = new Date();
+            var curr_h = d.getHours();
+            var curr_m = d.getMinutes();
+            curr_m += 60 * curr_h;
+            const myArray = imag.timp.split("-");
+            var h_m1 = myArray[0];
+            var h_m2 = myArray[1];
+            const myArray1 = h_m1.split(":");
+            var h1 = parseInt(myArray1[0]);
+            var m1 = parseInt(myArray1[1]);
+            m1 += 60 * h1;
+            const myArray2 = h_m2.split(":");
+            var h2 = parseInt(myArray2[0]);
+            var m2 = parseInt(myArray2[1]);
+            m2 += 60 * h2;
+        if (((m2 < m1) && (!(curr_m >= m2 && curr_m < m1))) || m1 <= curr_m && curr_m < m2) { %>
+            <figure>
+                <picture>
+                    <source srcset="<%- imag.fisier_mic %>" media="(max-width: 699px)">
+                    <source srcset="<%- imag.fisier_mediu %>" media="(min-width: 700px) and (max-width: 1000px)">
+                    <img src="<%- imag.fisier %>" alt="<%- imag.titlu %>" title="<%- imag.titlu %>">
+                </picture>
+                <figcaption>
+                    <%- imag.descriere %>
+                    <br>
+                    <% if (imag.autor) { %>
+                        <em><%- imag.autor %></em>
+                    <% } %>
+                </figcaption>
+            </figure>
+    <%
+            num_shown++;
+        }
+        if(num_shown == 10)
+            break;
+        } 
+    %>
+</div>

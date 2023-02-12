@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contact>
+    <mesaje>
+        <mesaj nume="Cont" prenume="Cont" data="Fri Feb 10 2023 23:30:23 GMT+0200 (Eastern European Standard Time)">undefined</mesaj>
+        <mesaj nume="Cont" prenume="Cont" data="Fri Feb 10 2023 23:30:55 GMT+0200 (Eastern European Standard Time)">undefined</mesaj>
+        <mesaj nume="Cont" prenume="Cont" data="Fri Feb 10 2023 23:31:59 GMT+0200 (Eastern European Standard Time)">undefined</mesaj>
+        <mesaj nume="Cont" prenume="Cont" data="Fri Feb 10 2023 23:32:04 GMT+0200 (Eastern European Standard Time)">ceva</mesaj>
+        <mesaj nume="Cont" prenume="Cont" data="Fri Feb 10 2023 23:37:21 GMT+0200 (Eastern European Standard Time)">ceva</mesaj>
+        <mesaj nume="Son" prenume="Andreea" data="Sat Feb 11 2023 04:12:44 GMT+0200 (Eastern European Standard Time)">bam 🙂</mesaj>
+        <mesaj nume="Son" prenume="Andreea" data="Sat Feb 11 2023 04:13:47 GMT+0200 (Eastern European Standard Time)">bam 🙂</mesaj>
+        <mesaj nume="Admin" prenume="Admin" data="Sat Feb 11 2023 18:12:00 GMT+0200 (Eastern European Standard Time)">fgksdf 🙂</mesaj>
+    </mesaje>
+</contact>

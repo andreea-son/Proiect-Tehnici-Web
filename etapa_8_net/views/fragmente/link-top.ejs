@@ -1,0 +1,15 @@
+<a href="#" id="link-top"><div id="sageata">&#129081;</div><span class="my-tooltip">Sus</span></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function checkOffset() {
+        var a=$(document).scrollTop()+window.innerHeight;
+        var b=$('footer').offset().top;
+        if (a<b) {
+            $('#link-top').css('bottom', '5px');
+        } else {
+            $('#link-top').css('bottom', (5+(a-b))+'px');
+        }
+    }
+    $(document).ready(checkOffset);
+    $(document).scroll(checkOffset);
+</script>

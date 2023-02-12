@@ -1,0 +1,45 @@
+#calendar > #continut_calendar{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    box-sizing: border-box;
+    grid-gap:1px;
+    color: var(--culoare-text-negru);
+}
+#calendar div:nth-child(n+8).zi{
+    box-shadow: 0 0 0 1px white;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--nuanta-roz);
+}
+
+#calendar .div-zi{
+    box-shadow: 0 0 0 1px white;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--nuanta-roz-highlight);
+    font-family: var(--font-family-heading);
+    font-weight: bold;
+}
+
+#calendar div:nth-child(n+8).eveniment{
+    box-shadow: 0 0 0 1px white;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--nuanta-roz-highlight);
+    color: white;
+}
+
+#calendar .div-gol{
+    box-shadow: 0 0 0 1px white;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--nuanta-roz);
+}
+
+#calendar .div-gol:last-child{
+    border-bottom-right-radius: 20px;
+}
+
+#calendar .div-zi:first-child{
+    border-top-left-radius: 20px;
+}

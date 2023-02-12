@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <script type="text/javascript" src="/resurse/js/produse.js"></script>
+        <script type="text/javascript" src="/resurse/js/acordeon.js"></script>
+        <%- include("../fragmente/head") %>
+        <script>
+            window.addEventListener('load', function(){
+                var up_arrows = Array.from(document.getElementsByClassName("arr_up"));
+                up_arrows.forEach(function(arr, idx) {
+                    arr.addEventListener('click', function(){
+                        var prev_val = document.getElementsByClassName("number_val")[idx].innerHTML;
+                        if(parseInt(prev_val) < parseInt(arr.value))
+                            document.getElementsByClassName("number_val")[idx].innerHTML = parseInt(prev_val) + 1;
+                        if(parseInt(document.getElementsByClassName("number_val")[idx].innerHTML) > 0){
+                            document.getElementsByClassName("selecteaza-cos")[idx].style.display = "inline";
+                        }
+                        if(parseInt(document.getElementsByClassName("number_val")[idx].innerHTML) == 0){
+                                document.getElementsByClassName("selecteaza-cos")[idx].style.display = "none";
+                        }
+                    });
+                    
+                });
+
+                var down_arrows = Array.from(document.getElementsByClassName("arr_down"));
+                down_arrows.forEach(function(arr, idx) {
+                    arr.addEventListener('click', function(){
+                        var prev_val = document.getElementsByClassName("number_val")[idx].innerHTML;
+                        if(parseInt(prev_val) > parseInt(arr.value))
+                            document.getElementsByClassName("number_val")[idx].innerHTML = parseInt(prev_val) - 1;
+                        if(parseInt(document.getElementsByClassName("number_val")[idx].innerHTML) > 0){
+                            document.getElementsByClassName("selecteaza-cos")[idx].style.display = "inline";
+                        }
+                        if(parseInt(document.getElementsByClassName("number_val")[idx].innerHTML) == 0){
+                            document.getElementsByClassName("selecteaza-cos")[idx].style.display = "none";
+                        }
+                    });
+                });
+
+                var select_prods = Array.from(document.getElementsByClassName("select-cos"));
+                select_prods.forEach(function(sel_prod, idx) {
+                    sel_prod.addEventListener('click', function(){
+                        var prev_val = document.getElementsByClassName("number_val")[idx].innerHTML;
+                        var id_prod = sel_prod.value.split("-")[1] ? sel_prod.value.split("-")[1] : sel_prod.value;
+                        sel_prod.value = prev_val + "-" + id_prod;
+                        if(this.checked == false){
+                            document.getElementsByClassName("number_val")[idx].innerHTML = "0";
+                        }
+                        if(document.getElementsByClassName("number_val")[idx].innerHTML == "0"){
+                            document.getElementsByClassName("selecteaza-cos")[idx].style.display = "none"; 
+                        }
+                        if(parseFloat(document.getElementsByClassName("number_val")[idx].innerHTML) > 0){
+                            document.getElementsByClassName("selecteaza-cos")[idx].style.display = "inline"; 
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <%- include("../fragmente/header") %>
+        </header>
+        <main>
+            <div class="accordion-flush mb-2 mt-2">
+                <div class="accordion-item" id="acc-itemOne">
+                    <button id="acc-buttonOne" class="btn btn-secondary text-light mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Ascunde Filtre
+                    </button>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                            <div id="filtre" class="container">
+                                <div class="row">
+                                    <div id="div-nume" class="col">
+                                        <label for="inp-nume">Nume</label>
+                                        <input type="text" id="inp-nume" class="form-control">
+                                        <small style="display:none;" id="mesaj-invalid-txt">
+                                            Input invalid!
+                                        </small>
+                                    </div>
+                                    <div id="div-ocazie" class="btn-group btn-group-toggle col container" data-toggle="buttons">
+                                        <span>Ocazie</span>
+                                        <div>
+                                            <input id="i_rad0" checked name="gr_rad" value="toate" type="radio">
+                                            <label class="btn btn-outline-primary mb-1" for="i_rad0">toate</label>
+                                        </div>
+                                        <div>
+                                            <input id="i_rad2"  name="gr_rad" value="1-8 martie" type="radio">
+                                            <label class="btn btn-outline-primary mb-1" for="i_rad2">1-8 martie</label>
+                                        </div>
+                                        <div>
+                                            <input id="i_rad4" name="gr_rad" value="Valentine's Day" type="radio">
+                                            <label class="btn btn-outline-primary mb-1" for="i_rad4">Valentine's Day</label>
+                                        </div>
+                                        <div>
+                                            <input id="i_rad3" name="gr_rad" value="onomastica" type="radio">
+                                            <label class="btn btn-outline-primary mb-1" for="i_rad3">onomastica</label>
+                                        </div>
+                                        <div>
+                                            <input id="i_rad1"  name="gr_rad" value="nunta" type="radio">
+                                            <label class="btn btn-outline-primary mb-1" for="i_rad1">nunta</label>
+                                        </div>
+                                        <div>
+                                            <input id="i_rad5" name="gr_rad" value="diverse" type="radio">
+                                            <label class="btn btn-outline-primary mb-1" for="i_rad5">diverse</label>
+                                        </div>
+                                    </div>
+                                    <div id="div-fire" class="col">
+                                        <label for="inp-fire" class="form-label">Numar minim de fire</label> <span>0 </span><input type="range" id="inp-fire" value="0" min="0" max="33" class="form-range"><span> 33</span><span id="infoRange">(0)</span>
+                                    </div>
+                                    
+                                    <div id="div-pret" class="col">
+                                        <label for="sel-pret">Categorii pret</label>
+                                        <select id="sel-pret" multiple size="5">
+                                            <option id="sel-toate-pret" selected value="toate">oricare</option>
+                                            <option value="0-50">&lt; 50</option>
+                                            <option value="50-100">50-100</option>
+                                            <option value="100-200">100-200</option>
+                                            <option value="200-300">&gt; 200</option>
+                                        </select>
+                                    </div>
+                                   
+                                    <div id="div-livrare" class="col">
+                                        <label for="inp-livrare">Ridicare personala</label>
+                                        <input list="livrare" id="inp-livrare">
+                                        <datalist id="livrare">
+                                            <option value="Da">Da</option>
+                                            <option value="Nu">Nu</option>
+                                        </datalist>
+                                    </div>
+                
+                                    <div id="div-culoare" class="col container">
+                                        <div>Culoare flori</div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch0" checked name="gr_ch" value="toate">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch0">toate</label>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch1" name="gr_ch" value="galben">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch1">galben</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">    
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch4" name="gr_ch" value="rosu">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch4">rosu</label>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch5" name="gr_ch" value="verde">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch5">verde</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">  
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch6" name="gr_ch" value="violet">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch6">violet</label>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch8" name="gr_ch" value="alb">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch8">alb</label>
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch3" name="gr_ch" value="multicolor">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch3">multicolor</label>
+                                            </div>
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch7" name="gr_ch" value="roz">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch7">roz</label>
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="col">
+                                                <input type="checkbox" id="i_ch2" name="gr_ch" value="portocaliu">
+                                                <label class="btn btn-outline-primary mb-1" for="i_ch2">portocaliu</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="div-flori" class="col">
+                                        <label for="sel-flori">Flori continute</label>
+                                        <select id="sel-flori">
+                                            <option id="sel-toate-flori" selected value="oricare">oricare</option>
+                                            <option value="trandafir">trandafir</option>
+                                            <option value="gypsophila">gypsophila</option>
+                                            <option value="bujor">bujor</option>
+                                            <option value="crizantema">crizantema</option>
+                                            <option value="margareta">margareta</option>
+                                            <option value="garoafa">garoafa</option>
+                                            <option value="dalie">dalie</option>
+                                            <option value="craciunita">craciunita</option>
+                                            <option value="crizantema">crizantema</option>
+                                            <option value="cactus">cactus</option>
+                                            <option value="frezie">frezie</option>
+                                            <option value="lalea">lalea</option>
+                                            <option value="craspedia">craspedia</option>
+                                        </select> 
+                                    </div>
+                                    <div id="div-descriere" class="col">
+                                        <label for="txt-descriere">Descriere</label>
+                                        <textarea id="txt-descriere" rows="6" cols="50" placeholder="'+cuvant' &rarr; se regaseste in descriere,&#10;'-cuvant' &rarr; nu se regaseste in descriere" class="form-control"></textarea>
+                                        <small style="display:none;" id="mesaj-invalid-txtarea">
+                                            Input invalid!
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p id="p-suma"></p>
+                                    <div id="butoane-filtre" class="col">
+                                        <button id="filtrare" class="btn text-light bg-primary"><i class="bi bi-filter-left"></i> <span id="txt-filtrare">Filtreaza</span></button>
+                                        <button id="resetare" class="btn text-light bg-primary"><i class="bi bi-x-circle"></i></i> <span id="txt-resetare">Reseteaza</span></button>
+                                        <button id="calculare" class="btn text-light bg-primary"><i class="bi bi-plus-circle"></i> <span id="txt-calculare">Aduna pret</span></button><br>
+                                        <button id="sortCrescNume" class="btn text-light bg-primary"><i class="bi bi-sort-numeric-up"></i> <span id="txt-sortare-cresc">Sorteaza crescator dupa pret</span></button>
+                                        <button id="sortDescrescNume" class="btn text-light bg-primary"><i class="bi bi-sort-numeric-down"></i> <span id="txt-sortare-desc">Sorteaza descrescator dupa pret</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item" id="acc-itemTwo">
+                    <button id="acc-buttonTwo" class="btn btn-secondary text-light mt-2 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    Ascunde Produse
+                    </button>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                        <div class="accordion-body">
+                            <section id="produse">
+                                <p id="fara-produse">Nu exista produse conform filtrelor selectate</p>
+                                <div class="grid-produse">
+                                    <% for(let prod of locals.produse) { %>
+                                        <article class="produs" id="art-<%-prod.id%>">
+                                            <h2 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h2>
+                                            <div>
+                                                <figure>
+                                                    <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:75%;height:auto;" alt="[imagine <%- prod.nume %>]"></a>
+                                                </figure>
+                                                <p class="categorie">Ocazie: <span class="val-categorie"><%- prod.ocazie%></span></p>
+                                                <p class="descriere">Descriere: <span class="val-descriere"><%- prod.descriere%></span></p>
+                                                <p class="detalii">Detalii produs:</p>
+                                                <ul class="info-prod">
+                                                    <li>Pret: <span class="val-pret"><%- prod.pret%></span> ron</li>
+                                                    <li>Numar fire: <span class="val-fire"><%- prod.num_fire%></span></li>
+                                                    <li>Culoare: <span class="val-culoare"><%- prod.culoare%></span></li>
+                                                    <li>Flori: <span class="val-flori"><%- prod.flori_continute%></span></li>
+                                                    <li>Data adaugarii: <time class="val-data"><%- prod.data_adaugare%></time></li>
+                                                    <li>Ridicare personala: <span class="val-livrare"><%- prod.ridicare_personala%></span></li>
+                                                </ul>
+                                                <%  if(prod.stoc == 0){ %>
+                                                    <p style="color: grey; position: relative; top: -22.5px; display: inline-block; margin-right: 5px" class="cos">Adauga in cos: </p>
+                                                    <div style="display: inline-block;">
+                                                        <i style="position: relative; display: block; color: grey" class="fa-solid fa-sort-up"></i>
+                                                        <span style="color: grey">0</span>
+                                                        <i style="position: relative; display: block; color: grey" class="fa-solid fa-sort-down"></i>
+                                                    </div>
+                                                    <label style="margin-left:5px; position:relative; color: grey; top: -22.5px" class="selecteaza-cos-dis">
+                                                        <input style="display: none;" type="button" class="select-cos-dis" value="<%-prod.id %>" disabled>
+                                                        <i class="bi bi-bag-plus-fill"></i>
+                                                    </label>
+                                                <%  } else { %>
+                                                    <p style="position: relative; top: -22.5px; display: inline-block; margin-right: 5px" class="cos">Adauga in cos: </p>
+                                                    <div style="display: inline-block;">
+                                                        <button class="arr_up" style="background-color:transparent; border:none; padding:0; position: relative; display: block" value="<%-prod.stoc%>"><i class="fa-solid fa-sort-up"></i></button>
+                                                        <span value="<%-prod.id %>" class="number_val">0</span>
+                                                        <button class="arr_down" style="background-color:transparent; border:none; padding:0; position: relative; display: block" value="0"><i class="fa-solid fa-sort-down"></i></button>
+                                                    </div>
+                                                    <label style="margin-left:5px; position: relative; top: -22.5px; display: none;" class="selecteaza-cos">
+                                                        <input type="checkbox" class="select-cos" value="<%-prod.id %>">
+                                                        <i class="bi bi-bag-plus-fill"></i>
+                                                    </label>
+                                                <%  } %>
+                                            </div>
+                                        </article>
+                                    <% }%>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </main>
+        <footer>
+            <%- include("../fragmente/footer") %>
+        </footer>
+    </body>
+</html>

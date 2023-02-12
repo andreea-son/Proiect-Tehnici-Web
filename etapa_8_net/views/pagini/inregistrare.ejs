@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <%- include('../fragmente/head'); %>
+        <script type="text/javascript" src="/resurse/js/verificari.js"></script>
+    </head>
+    <body>
+        <header>
+            <%- include('../fragmente/header'); %>
+        </header>
+        <main>
+            <h1>Creare Cont</h1>
+            <% if(!locals.raspuns) { %>
+                <%- include("../fragmente/formular", {action: "/inregistrare"}) %>
+            <% } %>
+            <% if(locals.raspuns) { %>
+                <%- locals.raspuns+"<br>"%>
+            <% } %>
+            <% if(locals.err) { %>
+                <div style="color: red; margin-top: 10px; margin-bottom: 10px;">Eroare: <%- locals.err %></div>
+            <% } %>
+            <%- include("../fragmente/link-top.ejs"); %>
+        </main>
+        <footer>
+          <%- include('../fragmente/footer'); %>
+        </footer>
+    </body>
+</html>
