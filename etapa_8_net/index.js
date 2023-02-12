@@ -19,9 +19,10 @@ const xmljs=require('xml-js');
 app=express();
 
 app.use(session({
-    secret: 'abcdefg',
-    resave: true,
-    saveUninitialized: false
+    store: new RedisStore(),
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: false
 }));
 
 app.set("view engine","ejs");
@@ -35,7 +36,7 @@ fs.writeFileSync(__dirname+"/resurse/css/biblioteci/customizare-bootstrap.css",c
 const env = process.env;
 
 const config = {
-  db: { /* do not put password or any sensitive info here, done only for demo */
+  db: {
     host: env.DB_HOST || 'manny.db.elephantsql.com',
     port: env.DB_PORT || '5432',
     user: env.DB_USER || 'qxdcuarh',
@@ -54,8 +55,8 @@ obGlobal={
     erori:null,
     imagini:null,
     tipuri:null,
-    protocol:"http://",
-    numeDomeniu:"localhost:8088",
+    protocol:"https://",
+    numeDomeniu:"buticul-cu-flori.onrender.com",
     clientMongo:new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 }),
     bdMongo:null,
     utiliz:null
