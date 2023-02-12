@@ -723,8 +723,11 @@ app.post("/cumpara", function(req, res){
                         res.send("Tranzactia a fost realizata cu succes!");
                     });
                     rez.rows.forEach(function(elem){elem.cantitate=cantitati_prod[elem.id]});
+                    var date = new Date();  
+                    userOffsetFromGmt = date.getTimezoneOffset() / 60; 
+                    date.setMilliseconds(date.getMilliseconds() - userOffsetFromGmt*3600000);
                     let jsonFactura={
-                        data: new Date(),
+                        data: date,
                         username: req.session.utilizator.username,
                         nume: req.session.utilizator.nume,
                         prenume: req.session.utilizator.prenume,
@@ -885,13 +888,17 @@ app.post("/chat", function(req, res){
         mesaj = req.body.mesaj + " 🙂";
     }
 
+    var date = new Date();  
+    userOffsetFromGmt = date.getTimezoneOffset() / 60; 
+    date.setMilliseconds(date.getMilliseconds() - userOffsetFromGmt*3600000);
+
     let mesajNou={
         type:"element", 
         name:"mesaj", 
         attributes:{
             nume:nume, 
             prenume:prenume, 
-            data:new Date()
+            data:date
         },
         elements:[{type:"text", "text":mesaj}]
     };
@@ -924,6 +931,11 @@ app.post("/comentarii", function(req, res){
     let prenume=req.session.utilizator?req.session.utilizator.prenume:null;
     let rol=req.session.utilizator?req.session.utilizator.rol.cod:null;
     let chat=req.session.utilizator?req.session.utilizator.culoare_chat:null;
+
+    var date = new Date();  
+    userOffsetFromGmt = date.getTimezoneOffset() / 60; 
+    date.setMilliseconds(date.getMilliseconds() - userOffsetFromGmt*3600000);
+
     let mesajNou={
         type:"element", 
         name:"mesaj", 
@@ -932,7 +944,7 @@ app.post("/comentarii", function(req, res){
             prenume:prenume, 
             rol:rol,
             chat:chat,
-            data:new Date()
+            data:date
         },
         elements:[{type:"text", "text":req.body.mesaj}]
     };
