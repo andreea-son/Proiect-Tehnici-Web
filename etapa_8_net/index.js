@@ -32,8 +32,6 @@ app.use("/poze_uploadate", express.static(__dirname+"/poze_uploadate"));
 var cssBootstrap=sass.compile(__dirname+"/resurse/sass/customizare-bootstrap.scss",{sourceMap:true});
 fs.writeFileSync(__dirname+"/resurse/css/biblioteci/customizare-bootstrap.css",cssBootstrap.css);
 
-DB_URL = "postgres://qxdcuarh:pVeZd0K6rgzm-T9sEV42RS5qR0tHqRLl@manny.db.elephantsql.com/qxdcuarh";
-
 const env = process.env;
 
 const config = {
@@ -48,12 +46,6 @@ const config = {
 };
 
 const client = new Client(config.db);
-
-// var client= new Client({database:"buticul_cu_flori",
-//     user:"andreea", 
-//     password:"andreea", 
-//     host:"localhost",
-//     port:5432});
 client.connect();
 
 const uri = "mongodb+srv://andreea:andreea@cluster0.3wb7hin.mongodb.net/?retryWrites=true&w=majority";
