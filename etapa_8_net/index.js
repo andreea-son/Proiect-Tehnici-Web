@@ -19,12 +19,12 @@ const xmljs=require('xml-js');
 app=express();
 
 app.use(session({
-    store: new RedisStore(),
     secret: 'secret',
     saveUninitialized: true,
     resave: false
 }));
 
+app.set('trust proxy', true);
 app.set("view engine","ejs");
 console.log("Cale proiect:", __dirname);
 app.use("/resurse", express.static(__dirname+"/resurse"));
@@ -213,40 +213,25 @@ app.get(["/","/index","/home"],function(req, res){
                 useriOnline=rez.rows;
             console.log(err);
 
-            var evenimente=[]
-            var locatie="";
-            
-            request('https://secure.geobytes.com/GetCityDetails?key=7c756203dbb38590a66e01a5a3e1ad96&fqcn=109.99.96.15',
-                function (error, response, body) {
-                    locatie="Nu se poate detecta pentru moment."
-                if(error) {
-                    console.error('eroare geobytes:', error)
+            client.query("select * from unnest(enum_range(null::ocazii_flori))", function(err, rezCateg){
+                if(err){
+                    console.log(err);
+                    renderError(res, 2);
                 }
                 else{
-                    var obiectLocatie=JSON.parse(body);
-                    console.log(obiectLocatie);
-                    locatie=obiectLocatie.geobytescountry+" "+obiectLocatie.geobytesregion
-                }
-                client.query("select * from unnest(enum_range(null::ocazii_flori))", function(err, rezCateg){
-                    if(err){
-                        console.log(err);
-                        renderError(res, 2);
-                    }
-                    else{
-                        continuareQuery=""
-                        if (req.query.tip)
-                            continuareQuery+=` and tip_produs='${req.query.tip}'`
-                        client.query("select * from flori where 1=1 " + continuareQuery , function(err, rezFlori){
-                            if(err){
-                                console.log(err);
-                                renderError(res, 2);
-                            }
-                            else{
-                                res.render("pagini/index", {ip: req.ip, imagini:obGlobal.imagini, useriOnline:useriOnline, evenimente:evenimente, locatie:locatie, produse:rezFlori.rows});
-                            }
-                        });
-                    }
-                });     
+                    continuareQuery=""
+                    if (req.query.tip)
+                        continuareQuery+=` and tip_produs='${req.query.tip}'`
+                    client.query("select * from flori where 1=1 " + continuareQuery , function(err, rezFlori){
+                        if(err){
+                            console.log(err);
+                            renderError(res, 2);
+                        }
+                        else{
+                            res.render("pagini/index", {ip: req.ip, imagini:obGlobal.imagini, useriOnline:useriOnline, produse:rezFlori.rows});
+                        }
+                    });
+                }  
         });
     });
 });
