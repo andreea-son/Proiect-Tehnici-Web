@@ -67,15 +67,21 @@
                             <li><a id="grafice" href="/grafice">Grafice</a></li>
                         </ul>
                     </li>
-            <%      } else if(locals.utilizator.rol.cod == 'comun') { %>
-                        <li><a id="comenzi" href="/comenzi">Comenzi</a></li>
             <%      }
                 }
             %>
             <%  if(locals.utilizator) { %>
-                    <li><a id="profil" href="/profil">Profil</a></li>
-                    <li><a id="delogare" href="/delogare">Delogare</a></li>
-                    <li><a id="stergere_cont" href="/stergere_cont">Sterege cont</a></li>
+                <li>
+                    <div>Gestionare profil</div>
+                    <ul>
+                        <% if(locals.utilizator.rol.cod == 'comun') { %>
+                            <li><a id="comenzi" href="/comenzi">Istoric Comenzi</a></li>
+                        <% } %>
+                        <li><a id="profil" href="/profil">Editare Profil</a></li>
+                        <li><a id="delogare" href="/delogare">Delogare</a></li>
+                        <li><a id="stergere_cont" href="/stergere_cont">Sterege cont</a></li>
+                    </ul>
+                </li>
             <%  } else { %>
                     <li><a href="/autentificare">Autentificare</a></li>
             <%  } %>

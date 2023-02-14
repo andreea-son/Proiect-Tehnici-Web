@@ -206,3 +206,16 @@ footer{
 .form-switch label{
     background-color: transparent !important;
 }
+
+.div-zi, .div-gol, .zi, .eveniment{
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.form-switch{
+    display: none;
+}
+
+img{
+    display: none;
+}

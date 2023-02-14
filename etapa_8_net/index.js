@@ -3,7 +3,7 @@ const fs=require("fs");
 const formidable=require("formidable");
 const sharp=require("sharp");
 const sass=require("sass");
-const {Client}=require("pg");
+const pg = require("pg");
 const path= require("path");
 const {Utilizator}=require("./module_proprii/utilizator.js");
 const AccesBD=require("./module_proprii/accesBD.js");
@@ -16,6 +16,7 @@ const QRCode= require('qrcode');
 const puppeteer=require('puppeteer');
 const request=require("request");
 const xmljs=require('xml-js');
+const { query } = require("express");
 app=express();
 
 app.use(session({
@@ -33,22 +34,6 @@ app.use("/poze_uploadate", express.static(__dirname+"/poze_uploadate"));
 var cssBootstrap=sass.compile(__dirname+"/resurse/sass/customizare-bootstrap.scss",{sourceMap:true});
 fs.writeFileSync(__dirname+"/resurse/css/biblioteci/customizare-bootstrap.css",cssBootstrap.css);
 
-const env = process.env;
-
-const config = {
-  db: {
-    host: env.DB_HOST || 'manny.db.elephantsql.com',
-    port: env.DB_PORT || '5432',
-    user: env.DB_USER || 'qxdcuarh',
-    password: env.DB_PASSWORD || 'pVeZd0K6rgzm-T9sEV42RS5qR0tHqRLl',
-    database: env.DB_NAME || 'qxdcuarh',
-  },
-  listPerPage: env.LIST_PER_PAGE || 10,
-};
-
-const client = new Client(config.db);
-client.connect();
-
 const uri = "mongodb+srv://andreea:andreea@cluster0.3wb7hin.mongodb.net/?retryWrites=true&w=majority";
 
 obGlobal={
@@ -61,8 +46,6 @@ obGlobal={
     bdMongo:null,
     utiliz:null
 }
-
-var url = "mongodb://127.0.0.1:27017";
 
 obGlobal.clientMongo.connect(function(err, bd) {
     if (err) console.log(err);
@@ -148,7 +131,7 @@ async function genereazaPdf(stringHTML,numeFis, callback) {
         callback(numeFis);
 }
 
-client.query("select * from unnest(enum_range(null::tipuri_flori))", function(err, rezTip){
+AccesBD.getInstanta().select({tabel:"unnest(enum_range(null::tipuri_flori))", campuri:['*'], conditiiAnd:""}, function(err, rezTip){
     if(err){
         console.log(err);
         renderError(res, 2);
@@ -203,35 +186,34 @@ stergeAccesariVechi();
 setInterval(stergeAccesariVechi, 60*60*1000);
 
 app.get(["/","/index","/home"],function(req, res){
-    client.query("select * from (select distinct on (u.username) u.username, u.nume, u.prenume, l.last_login from utilizatori u join utilizatori_logati l on u.id = l.user_id where now()-l.last_login <= interval '5 minutes' order by u.username, l.last_login desc) my_select order by last_login desc",
-        function(err, rez){
+    AccesBD.getInstanta().complexSelect({query:"select * from (select distinct on (u.username) u.username, u.nume, u.prenume, l.last_login from utilizatori u join utilizatori_logati l on u.id = l.user_id where now()-l.last_login <= interval '5 minutes' order by u.username, l.last_login desc) my_select order by last_login desc"}, function(err, rez){
+        if(err){
+            console.log(err);
+        }
+        let useriOnline=[];
+        if(!err && rez.rowCount!=0){
+            useriOnline=rez.rows;
+        }
+        console.log(err);
+        AccesBD.getInstanta().select({tabel:"unnest(enum_range(null::ocazii_flori))", campuri:['*'], conditiiAnd:""}, function(err, rezCateg){
             if(err){
                 console.log(err);
+                renderError(res, 2);
             }
-            let useriOnline=[];
-            if(!err && rez.rowCount!=0)
-                useriOnline=rez.rows;
-            console.log(err);
-
-            client.query("select * from unnest(enum_range(null::ocazii_flori))", function(err, rezCateg){
-                if(err){
-                    console.log(err);
-                    renderError(res, 2);
-                }
-                else{
-                    continuareQuery=""
-                    if (req.query.tip)
-                        continuareQuery+=` and tip_produs='${req.query.tip}'`
-                    client.query("select * from flori where 1=1 " + continuareQuery , function(err, rezFlori){
-                        if(err){
-                            console.log(err);
-                            renderError(res, 2);
-                        }
-                        else{
-                            res.render("pagini/index", {ip: req.ip, imagini:obGlobal.imagini, useriOnline:useriOnline, produse:rezFlori.rows});
-                        }
-                    });
-                }  
+            else{
+                continuareQuery=""
+                if (req.query.tip)
+                    continuareQuery+=` and tip_produs='${req.query.tip}'`
+                AccesBD.getInstanta().complexSelect({query:"select * from flori where 1=1 " + continuareQuery} , function(err, rezFlori){
+                    if(err){
+                        console.log(err);
+                        renderError(res, 2);
+                    }
+                    else{
+                        res.render("pagini/index", {ip: req.ip, imagini:obGlobal.imagini, useriOnline:useriOnline, produse:rezFlori.rows});
+                    }
+                });
+            }
         });
     });
 });
@@ -241,7 +223,7 @@ app.get("/galerie", function(req, res){
 
 app.get("/produse",function(req, res){
     console.log(req.query);
-    client.query("select * from unnest(enum_range(null::ocazii_flori))", function(err, rezCateg){
+    AccesBD.getInstanta().select({tabel:"unnest(enum_range(null::ocazii_flori))", campuri:['*'], conditiiAnd:""}, function(err, rezCateg){
         if(err){
             console.log(err);
             renderError(res, 2);
@@ -250,13 +232,13 @@ app.get("/produse",function(req, res){
             continuareQuery=""
             if (req.query.tip)
                 continuareQuery+=` and tip_produs='${req.query.tip}'`
-            client.query("select * from flori where 1=1 " + continuareQuery , function(err, rez){
+            AccesBD.getInstanta().complexSelect({query:"select * from flori where 1=1 " + continuareQuery}, function(err, rezFlori){
                 if(err){
                     console.log(err);
                     renderError(res, 2);
                 }
                 else{
-                    res.render("pagini/produse", {produse:rez.rows, optiuni:rezCateg.rows});
+                    res.render("pagini/produse", {produse:rezFlori.rows, optiuni:rezCateg.rows});
                 }
             });
         }
@@ -265,7 +247,7 @@ app.get("/produse",function(req, res){
 
 app.get("/produs/:id",function(req, res){
     console.log(req.params);
-    client.query("select * from flori where id="+req.params.id, function(err, rez){
+    AccesBD.getInstanta().select({tabel:"flori", campuri:["*"], conditiiAnd:[`id=${req.params.id}`]}, function(err, rez){
         if(err){
             console.log(err);
             renderError(res, 2);
@@ -519,7 +501,7 @@ app.post("/sterge/:id",function(req, res){
 });
 
 app.get("/administrare", function(req, res){
-    client.query("select * from flori where 1=1 order by id", function(err, rezQuery){
+    AccesBD.getInstanta().complexSelect({query:"select * from flori where 1=1 order by id"}, function(err, rezQuery){
         if(err){
             console.log(err);
         }
@@ -537,7 +519,7 @@ app.post("/administrare", function(req, res){
                 console.log(err);
             }
             else{
-                client.query("select * from flori where 1=1 order by id", function(err, rezProd){
+                AccesBD.getInstanta().complexSelect({query:"select * from flori where 1=1 order by id"}, function(err, rezProd){
                     if(err){
                         console.log(err);
                     }
@@ -545,7 +527,6 @@ app.post("/administrare", function(req, res){
                         res.render("pagini/administrare", {mesaj: "Stergerea s-a realizat cu succes!", produse: rezProd.rows});
                     }
                 });
-               
             }
         });  
 });
@@ -667,7 +648,7 @@ app.post("/cumpara", function(req, res){
                     if (fs.existsSync(cale_qr))
                         fs.rmSync(cale_qr, {force:true, recursive:true});
                     fs.mkdirSync(cale_qr);
-                    client.query("select id from utilizatori", function(err, rezQuery){
+                    AccesBD.getInstanta().select({tabel:"utilizatori", campuri:["id"], conditiiAnd:""}, function(err, rezQuery){
                         for(let utiliz of rezQuery.rows){
                             if(req.session.utilizator){
                                 let cale_utiliz=obGlobal.protocol+obGlobal.numeDomeniu+"/profil";

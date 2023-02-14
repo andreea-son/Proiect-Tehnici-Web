@@ -72,7 +72,7 @@ function actualizeazaDateFacturi(){
         let dateGrafic={}
         for (let factura of obFacturi){
             for(let prod of factura.produse){
-                dateGrafic[prod.nume]=dateGrafic[prod.nume]?dateGrafic[prod.nume]+1:prod.cantitate;
+                dateGrafic[prod.nume]=dateGrafic[prod.nume]?dateGrafic[prod.nume]+1:parseFloat(prod.cantitate);
                 if(!culoriDate[prod.nume])
                     culoriDate[prod.nume]=culoareRandom();
             }

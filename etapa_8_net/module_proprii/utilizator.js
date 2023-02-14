@@ -171,7 +171,7 @@ class Utilizator{
                 console.log(err);
             var d = new Date();
             Utilizator.trimiteMail("Mesaj inregistrare","Te-ai inregistrat cu succes pe site-ul "+Utilizator.numeDomeniu,
-            `<p>Incepand de azi, <span style='text-decoration: underline; color: pink;'>${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}</span>, te-ai inregistrat cu succes pe site-ul ${Utilizator.numeDomeniu}. Username-ul tau este ${utiliz.username}.</p> <p><a style='color: pink; text-decoration: none;' href='https://${Utilizator.numeDomeniu}/confirmare_mail/${d.getFullYear()}${d.getMonth()+1}${d.getDate()}${d.getHours()}${d.getMinutes()}${Math.round(d.getMilliseconds()/1000)}/${utiliz.username}/${token2}'>Click aici pentru confirmare</a></p>`, [], utiliz.email
+            `<p>Incepand de azi, <span style='text-decoration: underline; color: pink;'>${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}</span>, te-ai inregistrat cu succes pe site-ul ${Utilizator.numeDomeniu}. Username-ul tau este ${utiliz.username}.</p> <p><a style='color: pink; text-decoration: none;' href='http://${Utilizator.numeDomeniu}/confirmare_mail/${d.getFullYear()}${d.getMonth()+1}${d.getDate()}${d.getHours()}${d.getMinutes()}${Math.round(d.getMilliseconds()/1000)}/${utiliz.username}/${token2}'>Click aici pentru confirmare</a></p>`, [], utiliz.email
             )
         });
     }
@@ -296,13 +296,12 @@ class Utilizator{
                 rejectUnauthorized:false
             }
         });
-        //genereaza html
         await transp.sendMail({
             from:Utilizator.emailServer,
-            to:email, //TO DO
-            subject:subiect,//"Te-ai inregistrat cu succes",
-            text:mesajText, //"Username-ul tau este "+username
-            html: mesajHtml,// `<h1>Salut!</h1><p style='color:blue'>Username-ul tau este ${username}.</p> <p><a href='http://${numeDomeniu}/cod/${username}/${token}'>Click aici pentru confirmare</a></p>`,
+            to:email,
+            subject:subiect,
+            text:mesajText,
+            html: mesajHtml,
             attachments: atasamente
         })
         console.log("trimis mail");

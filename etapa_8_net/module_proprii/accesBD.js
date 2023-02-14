@@ -1,9 +1,3 @@
-/*
-
-ATENTIE!
-inca nu am implementat protectia contra SQL injection
-*/
-
 const {Client, Pool}=require("pg");
 
 class AccesBD{
@@ -20,11 +14,10 @@ class AccesBD{
     }
 
     initLocal(){
-
         const env = process.env;
 
         const config = {
-        db: { /* do not put password or any sensitive info here, done only for demo */
+        db: {
             host: env.DB_HOST || 'manny.db.elephantsql.com',
             port: env.DB_PORT || '5432',
             user: env.DB_USER || 'qxdcuarh',
@@ -36,6 +29,13 @@ class AccesBD{
 
         this.client = new Client(config.db);
         this.client.connect();
+        // var conString = "postgres://qxdcuarh:pVeZd0K6rgzm-T9sEV42RS5qR0tHqRLl@manny.db.elephantsql.com/qxdcuarh"
+        // var client = new pg.Client(conString);
+        // client.connect(function(err) {
+        //     if(err) {
+        //         return console.error('could not connect to postgres', err);
+        //     }
+        // });
     }
 
     getClient(){
@@ -94,6 +94,12 @@ class AccesBD{
      * @param {ObiectQuery} obj - un obiect cu datele pentru query
      * @param {function} callback - o functie callback cu 2 parametri: eroare si rezultatul queryului
      */
+
+    complexSelect({query=""} = {}, callback){
+        let comanda=query;
+        console.error(comanda);
+        this.client.query(comanda,callback)
+    }
 
     select({tabel="",campuri=[],conditiiAnd=[]} = {}, callback){
         let conditieWhere="";
